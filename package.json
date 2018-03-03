@@ -16,7 +16,7 @@
         "lint": "yarn run lint:ts",
         "lint:ts": "tslint ./src/ts/*.ts",
         "format": "yarn run format:scss",
-        "format:scss": "csscomb ./src/scss",
+        "format:scss": "csscomb ./src/scss ./examples",
         "serve": "http-server ./"
     },
     "devDependencies": {

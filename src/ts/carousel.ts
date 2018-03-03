@@ -2,22 +2,22 @@ module latte {
     export class Carousel {
         private carouselElement: HTMLElement;
         private contentElement: HTMLElement;
-        private stageElement: HTMLElement;
 
         private options: Options;
+        private stage: Stage;
 
         constructor(carouselElement: HTMLElement, options?: Options) {
             this.carouselElement = carouselElement;
             this.contentElement = carouselElement.querySelector(".latte-content");
-            this.stageElement = carouselElement.querySelector(".latte-stage");
 
             this.options = new Options(options);
+            this.stage = new Stage(this.contentElement, this.options);
 
-            this.updateCarousel();
+            this.update();
         }
 
-        private updateCarousel() {
-            const options = this.options.getBreakpointOptions();
+        public update() {
+            this.stage.update();
         }
     }
 }

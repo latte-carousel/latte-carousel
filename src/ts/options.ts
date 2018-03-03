@@ -44,7 +44,7 @@ module latte {
                     const option = this.responsive[key];
                     const breakpoint = parseInt(key, 10);
 
-                    if (breakpoint > matchBreakpoint && breakpoint <= screenWidth) {
+                    if (breakpoint >= matchBreakpoint && breakpoint <= screenWidth) {
                         matchOption = option;
                         matchBreakpoint = breakpoint;
                     }
