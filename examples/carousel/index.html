@@ -7,21 +7,11 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Carousel</title>
 
-    <link rel="stylesheet" href="../dist/latte-carousel.css">
-    <script src="../dist/latte-carousel.js"></script>
+    <link rel="stylesheet" href="../../dist/latte-carousel.css">
+    <link rel="stylesheet" href="./style.css">
 
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-        }
-
-        .latte-item div {
-            display: inline-block;
-            height: 200px;
-        }
-    </style>
+    <script src="../../dist/latte-carousel.js"></script>
+    <script src="./script.js"></script>
 </head>
 
 <body>
@@ -49,26 +39,6 @@
             </div>
         </div>
     </div>
-
-    <script>
-        let root = document.querySelector('.latte-carousel');
-
-        let options = {
-            count: 3,
-            padding: 50,
-            buttons: true,
-            dots: true,
-            rewind: true,
-            autoplay: 1000,
-            responsive: {
-                "0": { count: 1 },
-                "480": { count: 2 },
-                "768": { count: 3 }
-            }
-        };
-
-        let carousel = new latte.Carousel(root, options);
-    </script>
 </body>
 
 </html>
