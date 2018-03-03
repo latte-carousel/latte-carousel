@@ -1,8 +1,11 @@
 # latte-carousel
+
 LatteCarousel is a lightweight and responsive carousel.
 
-# Usage
+## Usage
+
 Create a HTML structure like this:
+
 ```html
 <div class="latte-carousel">
     <div class="latte-content">
@@ -17,6 +20,7 @@ Create a HTML structure like this:
 ```
 
 Run this code:
+
 ```js
 let root = document.querySelector('.latte-carousel');
 
@@ -24,7 +28,7 @@ let options = {
     count: 3,           // number of visible items
     padding: 50,        // stage padding size in pixels
     buttons: true,      // show previous and next buttons
-    dots: true,         // show dots navigation
+    dots: true,         // show navigation dots
     rewind: true,       // return to first page after last page
     autoplay: 1000,     // autoplay time in millis (0 to disable)
     responsive: {       // responsive options by screen width

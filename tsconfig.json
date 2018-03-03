@@ -2,12 +2,10 @@
     "compilerOptions": {
         "target": "es5",
         "outFile": "./dist/latte-carousel.js",
-        "sourceRoot": "./src/ts",
         "rootDir": "./src/ts",
         "noImplicitAny": true,
         "noImplicitThis": true,
         "noImplicitReturns": true,
-        "removeComments": true,
-        "sourceMap": true
+        "removeComments": true
     }
 }
