@@ -27,14 +27,15 @@ let root = document.querySelector('.latte-carousel');
 let options = {
     count: 3,           // number of visible items
     padding: 50,        // stage padding size in pixels
+    touch: true,        // enable touch support
     buttons: true,      // show previous and next buttons
     dots: true,         // show navigation dots
     rewind: true,       // return to first page after last page
     autoplay: 1000,     // autoplay time in millis (0 to disable)
     responsive: {       // responsive options by screen width
-        0:   { count: 1 },
-        480: { count: 2 },
-        768: { count: 3 }
+        "0":   { count: 1, touch: true },
+        "480": { count: 2, touch: true },
+        "768": { count: 3, touch: false }
     }
 };
 

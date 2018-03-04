@@ -5,6 +5,7 @@ module latte {
 
         private options: Options;
         private stage: Stage;
+        private touch: Touch;
 
         constructor(carouselElement: HTMLElement, options?: Options) {
             this.carouselElement = carouselElement;
@@ -12,12 +13,15 @@ module latte {
 
             this.options = new Options(options);
             this.stage = new Stage(this.contentElement, this.options);
+            this.touch = new Touch(this.carouselElement, this.stage, this.options);
 
             this.update();
         }
 
         public update() {
             this.stage.update();
+
+            this.touch.update();
         }
     }
 }

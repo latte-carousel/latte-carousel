@@ -1,10 +1,14 @@
 module latte {
     export class Stage {
+        public currentIndex: number = 0;
+        public currentPosition: number = 0;
+
         private contentElement: HTMLElement;
         private stageElement: HTMLElement;
         private itemElements: NodeListOf<HTMLElement>;
 
         private options: Options;
+        private currentOptions: Options;
 
         private contentSize: number;
         private stageSize: number;
@@ -21,11 +25,11 @@ module latte {
         }
 
         public update() {
-            const options = this.options.getBreakpointOptions();
+            this.currentOptions = this.options.getBreakpointOptions();
 
             // Compute size
             this.contentSize = this.contentElement.getBoundingClientRect().width;
-            this.itemSize = this.contentSize / options.count;
+            this.itemSize = this.contentSize / this.currentOptions.count;
             this.stageSize = this.itemSize * this.itemElements.length;
 
             // Apply size
@@ -36,6 +40,45 @@ module latte {
             }
 
             this.stageElement.style.width = this.stageSize + "px";
+
+            // Adjust position
+            this.moveTo(this.currentIndex);
+        }
+
+        public moveTo(index: number) {
+            const firstIndex = 0;
+            const lastIndex = this.itemElements.length - this.currentOptions.count;
+
+            // Compute position by index
+            this.currentIndex = index;
+            this.currentIndex = Math.min(Math.max(firstIndex, this.currentIndex), lastIndex);
+            this.currentPosition = this.currentIndex * this.itemSize * -1;
+
+            this.stageElement.style.left = this.currentPosition + "px";
+        }
+
+        public dragTo(delta: number) {
+            const lastIndex = this.itemElements.length - this.currentOptions.count;
+
+            const firstPosition = 0;
+            const lastPosition = lastIndex * this.itemSize * -1;
+
+            // Only change position
+            this.currentPosition += delta;
+            this.currentPosition = Math.min(Math.max(lastPosition, this.currentPosition), firstPosition);
+
+            this.stageElement.style.left = this.currentPosition + "px";
+        }
+
+        public dragEnd(movedLeft: boolean) {
+            // Compute index by position
+            if (movedLeft) {
+                this.currentIndex = Math.ceil(Math.abs(this.currentPosition) / this.itemSize);
+            } else {
+                this.currentIndex = Math.floor(Math.abs(this.currentPosition) / this.itemSize);
+            }
+
+            this.moveTo(this.currentIndex);
         }
     }
 }

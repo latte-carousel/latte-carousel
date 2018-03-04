@@ -2,6 +2,7 @@ module latte {
     export class Options {
         public count: number = 3;
         public padding: number = 0;
+        public touch: boolean = false;
         public buttons: boolean = true;
         public dots: boolean = false;
         public rewind: boolean = true;
