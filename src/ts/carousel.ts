@@ -15,6 +15,8 @@ module latte {
             this.stage = new Stage(this.contentElement, this.options);
             this.touch = new Touch(this.carouselElement, this.stage, this.options);
 
+            window.addEventListener("resize", this.onResize.bind(this));
+
             this.update();
         }
 
@@ -22,6 +24,10 @@ module latte {
             this.stage.update();
 
             this.touch.update();
+        }
+
+        private onResize(event: UIEvent) {
+            this.update();
         }
     }
 }

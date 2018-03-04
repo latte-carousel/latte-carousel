@@ -6,8 +6,12 @@ module latte {
         private options: Options;
         private currentOptions: Options;
 
-        private first = { x: 0, y: 0 };
-        private previous = { x: 0, y: 0 };
+        private firstX = 0;
+        private firstY = 0;
+        private previousX = 0;
+        private previousY = 0;
+
+        private dragging: boolean;
 
         constructor(carouselElement: HTMLElement, stage: Stage, options: Options) {
             this.carouselElement = carouselElement;
@@ -29,28 +33,32 @@ module latte {
         private onTouchStart(event: TouchEvent) {
             const touch = event.touches[0];
 
-            this.first.x = this.previous.x = touch.pageX;
-            this.first.y = this.previous.y = touch.pageY;
+            this.firstX = this.previousX = touch.pageX;
+            this.firstY = this.previousY = touch.pageY;
         }
 
         private onTouchMove(event: TouchEvent) {
             const touch = event.touches[0];
 
-            const deltaX = touch.pageX - this.previous.x;
-            const deltaY = touch.pageY - this.previous.y;
+            const deltaX = touch.pageX - this.previousX;
+            const deltaY = touch.pageY - this.previousY;
 
             if (this.currentOptions.touch) {
+                this.dragging = true;
+
                 this.stage.dragTo(deltaX);
             }
 
-            this.previous.x = touch.pageX;
-            this.previous.y = touch.pageY;
+            this.previousX = touch.pageX;
+            this.previousY = touch.pageY;
         }
 
         private onTouchEnd(event: TouchEvent) {
-            const movedLeft = this.first.x > this.previous.x;
+            const movedLeft = this.firstX > this.previousX;
 
-            if (this.currentOptions.touch) {
+            if (this.currentOptions.touch || this.dragging) {
+                this.dragging = false;
+
                 this.stage.dragEnd(movedLeft);
             }
         }
