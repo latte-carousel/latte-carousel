@@ -1,4 +1,11 @@
 module latte {
+
+    /**
+     * Carousel options.
+     *
+     * @export
+     * @class Options
+     */
     export class Options {
         public count: number = 3;
         public padding: number = 0;
@@ -8,8 +15,14 @@ module latte {
         public rewind: boolean = true;
         public autoplay: number = 0;
 
-        public responsive: ResponsiveOptions;
+        // TODO: Reuse global values
+        public responsive: ResponsiveMap;
 
+        /**
+         * Creates an instance of Options.
+         * @param {Options} [options] Options to copy properties.
+         * @memberof Options
+         */
         constructor(options?: Options) {
             if (options == null) {
                 return;
@@ -24,10 +37,16 @@ module latte {
 
             // Copy responsive properties
             if (options.responsive != null) {
-                this.responsive = new ResponsiveOptions(options.responsive);
+                this.responsive = new ResponsiveMap(options.responsive);
             }
         }
 
+        /**
+         * Find options on current breakpoint (screen width).
+         *
+         * @returns {Options} Options on current breakpoint (screen width).
+         * @memberof Options
+         */
         public getBreakpointOptions(): Options {
             if (this.responsive == null) {
                 return this;

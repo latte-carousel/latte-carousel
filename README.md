@@ -33,9 +33,10 @@ let options = {
     rewind: true,       // return to first page after last page
     autoplay: 1000,     // autoplay time in millis (0 to disable)
     responsive: {       // responsive options by screen width (does not repeat values above)
-        "0":   { count: 1, touch: true },
-        "480": { count: 2, touch: true },
-        "768": { count: 3, touch: false }
+        "0":    { count: 1, touch: true, buttons: false },
+        "480":  { count: 2, touch: true, buttons: false },
+        "768":  { count: 3, touch: false },
+        "1440": { count: 4, touch: false }
     }
 };
 
@@ -55,26 +56,32 @@ This library is tested on Google Chrome, but it should work on all major browser
 
 ## Build
 
-Install dependencies
+Install dependencies:
 
 ```sh
 yarn install
 ```
 
-Build project
+Build project:
 
 ```sh
 yarn run build
 ```
 
-Result files
+Result files:
 
 - dist/latte-carousel.css
 - dist/latte-carousel.d.ts
 - dist/latte-carousel.js
 - dist/latte-carousel.js.map (TypeScript only)
 
-Minified files
+Minified files:
 
 - dist/latte-carousel.min.css
 - dist/latte-carousel.min.js
+
+Check examples:
+
+```sh
+yarn run serve
+```

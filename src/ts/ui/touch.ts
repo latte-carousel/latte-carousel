@@ -19,6 +19,7 @@ module latte {
             this.stage = stage;
             this.options = options;
 
+            // TODO: Clear events
             this.carouselElement.addEventListener("touchstart", this.onTouchStart.bind(this));
             this.carouselElement.addEventListener("touchmove", this.onTouchMove.bind(this));
             this.carouselElement.addEventListener("touchend", this.onTouchEnd.bind(this));
@@ -43,6 +44,7 @@ module latte {
             const deltaX = touch.pageX - this.previousX;
             const deltaY = touch.pageY - this.previousY;
 
+            // TODO: Lock vertical scroll while dragging carousel
             if (this.currentOptions.touch) {
                 this.dragging = true;
 

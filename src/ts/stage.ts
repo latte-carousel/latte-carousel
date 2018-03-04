@@ -54,7 +54,16 @@ module latte {
             this.currentIndex = Math.min(Math.max(firstIndex, this.currentIndex), lastIndex);
             this.currentPosition = this.currentIndex * this.itemSize * -1;
 
+            // TODO: Tween using translate (integers only - ceil?)
             this.stageElement.style.left = this.currentPosition + "px";
+        }
+
+        public movePrevious() {
+            this.moveTo(this.currentIndex - 1);
+        }
+
+        public moveNext() {
+            this.moveTo(this.currentIndex + 1);
         }
 
         public dragTo(delta: number) {
@@ -67,6 +76,7 @@ module latte {
             this.currentPosition += delta;
             this.currentPosition = Math.min(Math.max(lastPosition, this.currentPosition), firstPosition);
 
+            // TODO: Move using translate
             this.stageElement.style.left = this.currentPosition + "px";
         }
 
