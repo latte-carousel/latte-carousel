@@ -15,7 +15,6 @@ module latte {
         public rewind: boolean = true;
         public autoplay: number = 0;
 
-        // TODO: Reuse global values
         public responsive: ResponsiveMap;
 
         /**
@@ -42,9 +41,9 @@ module latte {
         }
 
         /**
-         * Find options on current breakpoint (screen width).
+         * Finds options based on current breakpoint (screen width).
          *
-         * @returns {Options} Options on current breakpoint (screen width).
+         * @returns {Options} Carousel options.
          * @memberof Options
          */
         public getBreakpointOptions(): Options {

@@ -27,7 +27,7 @@ module latte {
         }
 
         /**
-         * Triggers the event type to all listeners.
+         * Triggers all listeners by event type.
          *
          * @param {string} event Event type.
          * @param {*} [data] Event data.
@@ -42,7 +42,5 @@ module latte {
                 }
             }
         }
-
-        // TODO: Clear events (by type / all).
     }
 }

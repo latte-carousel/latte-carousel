@@ -18,6 +18,10 @@
     border: solid #333333;
     border-width: 0 2px 2px 0;
     background: transparent;
+
+    &.invisible {
+        display: none;
+    }
 }
 
 .latte-previous {
