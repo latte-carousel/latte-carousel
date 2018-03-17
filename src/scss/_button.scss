@@ -1,0 +1,37 @@
+.latte-previous,
+.latte-next {
+    position: absolute;
+    z-index: 10;
+    top: 50%;
+
+    display: inline-block;
+
+    box-sizing: border-box;
+    width: 0;
+    height: 0;
+    margin: 0;
+    margin-top: -11px;
+    padding: 10px;
+
+    cursor: pointer;
+
+    border: solid #333333;
+    border-width: 0 2px 2px 0;
+    background: transparent;
+
+    &.invisible {
+        display: none;
+    }
+}
+
+.latte-previous {
+    left: -6px;
+
+    transform: rotate(135deg);
+}
+
+.latte-next {
+    right: -6px;
+
+    transform: rotate(-45deg);
+}
