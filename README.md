@@ -1,6 +1,6 @@
 # About
 
-![LatteCarousel](docs/colored_small.png?raw=true "LatteCarousel") LatteCarousel is a lightweight and responsive carousel without any dependencies.
+![LatteCarousel](docs/colored_small.png "LatteCarousel") LatteCarousel is a lightweight and responsive carousel without any dependencies.
 
 ## Usage
 
@@ -83,7 +83,6 @@ Result files:
 - dist/latte-carousel.css
 - dist/latte-carousel.d.ts
 - dist/latte-carousel.js
-- dist/latte-carousel.js.map (TypeScript only)
 
 Minified files:
 

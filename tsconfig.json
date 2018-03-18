@@ -8,8 +8,7 @@
         "noImplicitThis": true,
         "noImplicitReturns": true,
         "removeComments": true,
-        "declaration": true,
-        "sourceMap": true
+        "declaration": true
     },
     "exclude": [
         "./dist",
