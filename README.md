@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/latte-carousel/latte-carousel.svg?branch=master)](https://travis-ci.com/latte-carousel/latte-carousel)
+
 # About
 
 ![LatteCarousel](docs/colored_small.png "LatteCarousel") LatteCarousel is a lightweight and responsive carousel without any dependencies.
