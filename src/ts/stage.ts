@@ -5,8 +5,9 @@ module latte {
      *
      * @export
      * @class Stage
+     * @extends {EventEmitter}
      */
-    export class Stage {
+    export class Stage extends EventEmitter {
         private currentOptions: Options;
 
         private currentIndex: number = 0;
@@ -29,6 +30,8 @@ module latte {
             private stageElement: HTMLElement,
             private itemElements: NodeListOf<HTMLElement>,
             private options: Options) {
+            super();
+
             this.update();
         }
 
@@ -76,7 +79,7 @@ module latte {
          */
         public moveTo(index: number, tween: boolean = true) {
             const firstIndex = 0;
-            const lastIndex = this.itemElements.length - this.currentOptions.count;
+            const lastIndex = this.last();
 
             // Rewind index
             if (this.currentOptions.rewind) {
@@ -94,6 +97,8 @@ module latte {
 
             const duration = tween ? 300 : 0;
             Tween.translate(this.stageElement, this.currentPosition, 0, duration);
+
+            this.trigger("move");
         }
 
         /**
@@ -103,7 +108,7 @@ module latte {
          * @memberof Stage
          */
         public drag(delta: number) {
-            const lastIndex = this.itemElements.length - this.currentOptions.count;
+            const lastIndex = this.last();
 
             const firstPosition = 0;
             const lastPosition = lastIndex * this.itemSize * -1;
@@ -130,6 +135,36 @@ module latte {
             }
 
             this.move(0);
+        }
+
+        /**
+         * Returns carousel item count.
+         *
+         * @returns {number} Item count.
+         * @memberof Stage
+         */
+        public count(): number {
+            return this.itemElements.length;
+        }
+
+        /**
+         * Returns current index.
+         *
+         * @returns {number} Current index.
+         * @memberof Stage
+         */
+        public current(): number {
+            return this.currentIndex;
+        }
+
+        /**
+         * Returns last index.
+         *
+         * @returns {number} Last index.
+         * @memberof Stage
+         */
+        public last(): number {
+            return this.itemElements.length - this.currentOptions.count;
         }
     }
 }

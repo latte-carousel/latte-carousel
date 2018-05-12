@@ -25,10 +25,14 @@ module latte {
                 if (map.hasOwnProperty(breakpoint)) {
                     const responsiveOptions = new Options((map as any)[breakpoint]);
 
-                    for (const prop in responsiveOptions) {
-                        if (responsiveOptions.hasOwnProperty(prop) && prop !== "responsive" &&
-                            (responsiveOptions as any)[prop] !== (globalOptions as any)[prop]) {
-                            (responsiveOptions as any)[prop] = (globalOptions as any)[prop];
+                    // Copy from global options
+                    if (globalOptions != null) {
+                        for (const prop in globalOptions) {
+                            if (globalOptions.hasOwnProperty(prop)
+                                && prop !== "responsive"
+                                && (map as any)[breakpoint][prop] == null) {
+                                (responsiveOptions as any)[prop] = (globalOptions as any)[prop];
+                            }
                         }
                     }
 
