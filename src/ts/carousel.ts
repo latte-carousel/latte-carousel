@@ -19,6 +19,7 @@ module latte {
         private touch: Touch;
         private buttons: Buttons;
         private dots: Dots;
+        private autoplay: Autoplay;
 
         /**
          * Creates an instance of Carousel.
@@ -38,6 +39,7 @@ module latte {
             this.touch = new Touch(this.contentElement, this.stage, this.options);
             this.buttons = new Buttons(this.carouselElement, this.contentElement, this.stage, this.options);
             this.dots = new Dots(this.carouselElement, this.stage, this.options);
+            this.autoplay = new Autoplay(this.contentElement, this.stage, this.options);
 
             // TODO: Clear event.
             window.addEventListener("resize", this.onWindowResize.bind(this));
@@ -64,6 +66,8 @@ module latte {
             this.buttons.update();
 
             this.dots.update();
+
+            this.autoplay.update();
         }
 
         /**

@@ -51,9 +51,9 @@ carousel.trigger('previous');
 - [x] Responsive options
 - [x] Touch support
 - [x] Stage padding
-- [ ] Navigation dots
+- [x] Navigation dots
 - [x] Rewind carousel
-- [ ] Autoplay carousel
+- [x] Autoplay carousel
 - [x] Carousel events
 
 ## Browser Support
