@@ -1,6 +1,6 @@
 {
     "name": "latte-carousel",
-    "version": "0.5.0",
+    "version": "0.7.0",
     "description": "LatteCarousel is a lightweight and responsive carousel.",
     "main": "index.js",
     "repository": "https://github.com/latte-carousel/latte-carousel.git",
