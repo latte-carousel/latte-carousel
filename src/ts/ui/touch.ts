@@ -18,15 +18,15 @@ module latte {
 
         /**
          * Creates an instance of Touch.
-         * @param {HTMLElement} carouselElement Carousel element.
+         * @param {HTMLElement} contentElement Content element.
          * @param {Stage} stage Carousel stage.
          * @param {Options} options Carousel options.
          * @memberof Touch
          */
-        constructor(private carouselElement: HTMLElement, private stage: Stage, private options: Options) {
-            this.carouselElement.addEventListener("touchstart", this.onTouchStart.bind(this));
-            this.carouselElement.addEventListener("touchmove", this.onTouchMove.bind(this));
-            this.carouselElement.addEventListener("touchend", this.onTouchEnd.bind(this));
+        constructor(private contentElement: HTMLElement, private stage: Stage, private options: Options) {
+            this.contentElement.addEventListener("touchstart", this.onTouchStart.bind(this));
+            this.contentElement.addEventListener("touchmove", this.onTouchMove.bind(this));
+            this.contentElement.addEventListener("touchend", this.onTouchEnd.bind(this));
 
             this.update();
         }

@@ -27,16 +27,15 @@ module latte {
                 return;
             }
 
-            // Copy properties
-            for (const key in options) {
-                if (options.hasOwnProperty(key) && key !== "responsive") {
-                    (this as any)[key] = (options as any)[key];
+            for (const prop in options) {
+                if (options.hasOwnProperty(prop) && prop !== "responsive") {
+                    (this as any)[prop] = (options as any)[prop];
                 }
             }
 
             // Copy responsive properties
             if (options.responsive != null) {
-                this.responsive = new ResponsiveMap(options.responsive);
+                this.responsive = new ResponsiveMap(options.responsive, this);
             }
         }
 

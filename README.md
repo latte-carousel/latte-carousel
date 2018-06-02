@@ -31,7 +31,7 @@ let options = {
     buttons: true,      // show previous and next buttons
     dots: true,         // show navigation dots
     rewind: true,       // return to first page after last page
-    autoplay: 1000,     // autoplay time in millis (0 to disable)
+    autoplay: 0,        // autoplay time in millis (0 to disable)
     responsive: {       // responsive options by screen width (default value for unespecified fields)
         "0":    { count: 1.5, touch: true, buttons: false },
         "480":  { count: 2.5, touch: true, buttons: false },
@@ -51,9 +51,9 @@ carousel.trigger('previous');
 - [x] Responsive options
 - [x] Touch support
 - [x] Stage padding
-- [ ] Pagination dots
+- [x] Navigation dots
 - [x] Rewind carousel
-- [ ] Autoplay carousel
+- [x] Autoplay carousel
 - [x] Carousel events
 
 ## Browser Support

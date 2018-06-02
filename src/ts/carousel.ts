@@ -7,6 +7,7 @@ module latte {
      *
      * @export
      * @class Carousel
+     * @extends {EventEmitter}
      */
     export class Carousel extends EventEmitter {
         private contentElement: HTMLElement;
@@ -17,6 +18,8 @@ module latte {
         private stage: Stage;
         private touch: Touch;
         private buttons: Buttons;
+        private dots: Dots;
+        private autoplay: Autoplay;
 
         /**
          * Creates an instance of Carousel.
@@ -33,11 +36,15 @@ module latte {
 
             this.options = new Options(options);
             this.stage = new Stage(this.contentElement, this.stageElement, this.itemElements, this.options);
-            this.touch = new Touch(this.carouselElement, this.stage, this.options);
+            this.touch = new Touch(this.contentElement, this.stage, this.options);
             this.buttons = new Buttons(this.carouselElement, this.contentElement, this.stage, this.options);
+            this.dots = new Dots(this.carouselElement, this.stage, this.options);
+            this.autoplay = new Autoplay(this.contentElement, this.stage, this.options);
 
             // TODO: Clear event.
             window.addEventListener("resize", this.onWindowResize.bind(this));
+
+            this.stage.on("move", this.onStageMove.bind(this));
 
             this.update();
 
@@ -48,14 +55,19 @@ module latte {
         /**
          * Updates carousel.
          *
+         * @private
          * @memberof Carousel
          */
-        public update() {
+        private update() {
             this.stage.update();
 
             this.touch.update();
 
             this.buttons.update();
+
+            this.dots.update();
+
+            this.autoplay.update();
         }
 
         /**
@@ -67,6 +79,17 @@ module latte {
          */
         private onWindowResize(event: UIEvent) {
             this.update();
+        }
+
+        /**
+         * Stage move listener.
+         *
+         * @private
+         * @param {*} data Event data.
+         * @memberof Carousel
+         */
+        private onStageMove(data: any) {
+            this.dots.update();
         }
 
         /**
