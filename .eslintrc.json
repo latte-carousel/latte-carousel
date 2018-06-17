@@ -1,12 +1,23 @@
 {
     "extends": "eslint:recommended",
     "parserOptions": {
-        "ecmaVersion": 5
+        "ecmaVersion": 6
     },
     "env": {
-        "browser": true
+        "node": true
     },
-    "globals": {
-        "latte": true
-    }
+    "overrides": [
+        {
+            "files": ["example/**/*.js"],
+            "parserOptions": {
+                "ecmaVersion": 5
+            },
+            "env": {
+                "browser": true
+            },
+            "globals": {
+                "latte": true
+            }
+        }
+    ]
 }

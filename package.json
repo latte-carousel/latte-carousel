@@ -15,8 +15,9 @@
         "format": "yarn run format:prettier && yarn run format:csscomb",
         "format:prettier": "prettier --find-config-path --write './src/**' './example/**'",
         "format:csscomb": "csscomb './src/scss' './example'",
-        "lint": "yarn run lint:tslint",
-        "lint:tslint": "tslint './src/ts/*.ts'"
+        "lint": "yarn run lint:tslint && yarn run lint:eslint",
+        "lint:tslint": "tslint './**/*.ts'",
+        "lint:eslint": "eslint './**/*.js'"
     },
     "devDependencies": {
         "clean-webpack-plugin": "^0.1.19",
