@@ -1,8 +1,10 @@
 [![Build Status](https://travis-ci.com/latte-carousel/latte-carousel.svg?branch=master)](https://travis-ci.com/latte-carousel/latte-carousel)
 
+![LatteCarousel](https://latte-carousel.github.io/img/colored_small.png "LatteCarousel")
+
 # About
 
-![LatteCarousel](docs/colored_small.png "LatteCarousel") LatteCarousel is a lightweight and responsive carousel without any dependencies.
+LatteCarousel is a lightweight and responsive carousel without any dependencies.
 
 ## Usage
 
@@ -23,38 +25,39 @@
 ```
 
 ```js
-let root = document.querySelector('.latte-carousel');
+let root = document.querySelector(".latte-carousel");
 
 let options = {
-    count: 3,           // number of visible items
-    touch: true,        // enable touch support
-    buttons: true,      // show previous and next buttons
-    dots: true,         // show navigation dots
-    rewind: true,       // return to first page after last page
-    autoplay: 0,        // autoplay time in millis (0 to disable)
-    responsive: {       // responsive options by screen width (default value for unespecified fields)
-        "0":    { count: 1.5, touch: true, buttons: false },
-        "480":  { count: 2.5, touch: true, buttons: false },
-        "768":  { count: 3, touch: false },
-        "1440": { count: 4, touch: false }
-    }
+    count: 3, // number of visible items
+    touch: true, // enable touch support
+    buttons: true, // show previous and next buttons
+    dots: true, // show navigation dots
+    rewind: true, // return to first page after last page
+    autoplay: 0, // autoplay time in millis (0 to disable)
+    responsive: {
+        // responsive options by screen width (default value for unespecified fields)
+        "0": { count: 1.5, touch: true, buttons: false },
+        "480": { count: 2.5, touch: true, buttons: false },
+        "768": { count: 3, touch: false },
+        "1440": { count: 4, touch: false },
+    },
 };
 
 let carousel = new latte.Carousel(root, options);
 
-carousel.trigger('next');
-carousel.trigger('previous');
+carousel.trigger("next");
+carousel.trigger("previous");
 ```
 
 ## Features
 
-- [x] Responsive options
-- [x] Touch support
-- [x] Stage padding
-- [x] Navigation dots
-- [x] Rewind carousel
-- [x] Autoplay carousel
-- [x] Carousel events
+-   [x] Responsive options
+-   [x] Touch support
+-   [x] Stage padding
+-   [x] Navigation dots
+-   [x] Rewind carousel
+-   [x] Autoplay carousel
+-   [x] Carousel events
 
 ## Browser Support
 
@@ -82,11 +85,11 @@ yarn run serve
 
 Result files:
 
-- dist/latte-carousel.css
-- dist/latte-carousel.d.ts
-- dist/latte-carousel.js
+-   dist/latte-carousel.css
+-   dist/latte-carousel.d.ts
+-   dist/latte-carousel.js
 
 Minified files:
 
-- dist/latte-carousel.min.css
-- dist/latte-carousel.min.js
+-   dist/latte-carousel.min.css
+-   dist/latte-carousel.min.js

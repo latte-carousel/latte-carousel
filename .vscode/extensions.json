@@ -1,0 +1,11 @@
+{
+    "recommendations": [
+        "editorconfig.editorconfig",
+        "esbenp.prettier-vscode",
+        "mrmlnc.vscode-csscomb",
+        "pflannery.vscode-versionlens",
+        "eg2.tslint",
+        "dbaeumer.vscode-eslint",
+        "joelday.docthis"
+    ]
+}

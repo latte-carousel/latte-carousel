@@ -1,79 +1,79 @@
-module latte {
+import { Options } from "../option/options";
+import { Stage } from "../stage";
+
+/**
+ * Carousel autoplay.
+ *
+ * @export
+ * @class Autoplay
+ */
+export class Autoplay {
+    private currentOptions: Options;
+
+    private intervalId: number = 0;
+    private mouseOver: boolean = false;
 
     /**
-     * Carousel autoplay.
-     *
-     * @export
-     * @class Autoplay
+     * Creates an instance of Autoplay.
+     * @param {HTMLElement} contentElement Content element.
+     * @param {Stage} stage Carousel stage.
+     * @param {Options} options Carousel options.
+     * @memberof Autoplay
      */
-    export class Autoplay {
-        private currentOptions: Options;
+    constructor(private contentElement: HTMLElement, private stage: Stage, private options: Options) {
+        this.contentElement.addEventListener("mouseenter", this.onMouseEnter.bind(this));
+        this.contentElement.addEventListener("mouseleave", this.onMouseLeave.bind(this));
 
-        private intervalId: number = 0;
-        private mouseOver: boolean = false;
+        this.update();
+    }
 
-        /**
-         * Creates an instance of Autoplay.
-         * @param {HTMLElement} contentElement Content element.
-         * @param {Stage} stage Carousel stage.
-         * @param {Options} options Carousel options.
-         * @memberof Autoplay
-         */
-        constructor(private contentElement: HTMLElement, private stage: Stage, private options: Options) {
-            this.contentElement.addEventListener("mouseenter", this.onMouseEnter.bind(this));
-            this.contentElement.addEventListener("mouseleave", this.onMouseLeave.bind(this));
+    /**
+     * Updates carousel autoplay.
+     *
+     * @memberof Autoplay
+     */
+    public update() {
+        this.currentOptions = this.options.getBreakpointOptions();
 
-            this.update();
+        // Clear current interval
+        if (this.intervalId > 0) {
+            clearInterval(this.intervalId);
         }
 
-        /**
-         * Updates carousel autoplay.
-         *
-         * @memberof Autoplay
-         */
-        public update() {
-            this.currentOptions = this.options.getBreakpointOptions();
-
-            // Clear current interval
-            if (this.intervalId > 0) {
-                clearInterval(this.intervalId);
-            }
-
-            if (this.currentOptions.autoplay > 0) {
-                this.intervalId = setInterval(this.onInterval.bind(this), this.currentOptions.autoplay);
-            }
+        if (this.currentOptions.autoplay > 0) {
+            this.intervalId = setInterval(this.onInterval.bind(this), this.currentOptions.autoplay);
         }
+    }
 
-        /**
-         * Interval listener.
-         *
-         * @private
-         * @memberof Autoplay
-         */
-        private onInterval() {
-            if (!this.mouseOver) {
-                this.stage.move(1);
-            }
+    /**
+     * Interval listener.
+     *
+     * @private
+     * @memberof Autoplay
+     */
+    private onInterval() {
+        if (!this.mouseOver) {
+            this.stage.move(1);
         }
+    }
 
-        /**
-         * Mouse enter listener.
-         *
-         * @private
-         * @memberof Autoplay
-         */
-        private onMouseEnter() {
-            this.mouseOver = true;
-        }
+    /**
+     * Mouse enter listener.
+     *
+     * @private
+     * @memberof Autoplay
+     */
+    private onMouseEnter() {
+        this.mouseOver = true;
+    }
 
-        /**
-         * Mouse leave listener.
-         *
-         * @private
-         * @memberof Autoplay
-         */
-        private onMouseLeave() {
-            this.mouseOver = false;
-        }
+    /**
+     * Mouse leave listener.
+     *
+     * @private
+     * @memberof Autoplay
+     */
+    private onMouseLeave() {
+        this.mouseOver = false;
     }
 }
