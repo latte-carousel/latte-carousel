@@ -1,17 +1,13 @@
 {
     "compilerOptions": {
         "target": "es5",
-        "outDir": "./dist",
-        "outFile": "./dist/latte-carousel.js",
-        "rootDir": "./src/ts",
+        "module": "commonjs",
+        "outDir": "lib",
         "noImplicitAny": true,
         "noImplicitThis": true,
         "noImplicitReturns": true,
-        "removeComments": true,
+        "sourceMap": true,
         "declaration": true
     },
-    "exclude": [
-        "./dist",
-        "./examples"
-    ]
+    "exclude": ["./dist", "./examples"]
 }
