@@ -12,7 +12,7 @@ LatteCarousel is a lightweight and responsive carousel without any dependencies.
 <link rel="stylesheet" href="latte-carousel.min.css">
 <script src="latte-carousel.min.js"></script>
 
-<div class="latte-carousel">
+<div class="latte-carousel" id="carousel">
     <div class="latte-item"></div>
     <div class="latte-item"></div>
     <div class="latte-item"></div>
@@ -21,26 +21,26 @@ LatteCarousel is a lightweight and responsive carousel without any dependencies.
 ```
 
 ```js
-let options = {
-    count: 3, // number of visible items
-    touch: true, // enable touch support
-    buttons: true, // show previous and next buttons
-    dots: true, // show navigation dots
-    rewind: true, // return to first page after last page
-    autoplay: 0, // autoplay time in millis (0 to disable)
+var options = {
+    count: 3,
+    touch: true,
+    buttons: true,
+    dots: true,
+    rewind: true,
+    autoplay: 0,
     responsive: {
-        // responsive options by screen width (default value for unespecified fields)
-        "0": { count: 1.5, touch: true, buttons: false },
-        "480": { count: 2.5, touch: true, buttons: false },
+        "0": { count: 1.5, buttons: false },
+        "480": { count: 2.5, buttons: false },
         "768": { count: 3, touch: false },
         "1440": { count: 4, touch: false },
     },
 };
 
-let carousel = new latte.Carousel(".latte-carousel", options);
+var carousel = new latte.Carousel("#carousel", options);
 
 carousel.trigger("next");
 carousel.trigger("previous");
+
 carousel.trigger("goto", 0);
 
 carousel.remove();
@@ -81,12 +81,6 @@ yarn run serve
 ```
 
 Result files:
-
--   dist/latte-carousel.css
--   dist/latte-carousel.d.ts
--   dist/latte-carousel.js
-
-Minified files:
 
 -   dist/latte-carousel.min.css
 -   dist/latte-carousel.min.js
