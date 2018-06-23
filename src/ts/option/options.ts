@@ -1,75 +1,74 @@
-module latte {
+import { ResponsiveMap } from "./responsive-map";
+
+/**
+ * Carousel options.
+ *
+ * @export
+ * @class Options
+ */
+export class Options {
+    public count: number = 3;
+    public padding: number = 0;
+    public touch: boolean = false;
+    public buttons: boolean = true;
+    public dots: boolean = false;
+    public rewind: boolean = true;
+    public autoplay: number = 0;
+
+    public responsive: ResponsiveMap;
 
     /**
-     * Carousel options.
-     *
-     * @export
-     * @class Options
+     * Creates an instance of Options.
+     * @param {Options} [options] Options to copy properties.
+     * @memberof Options
      */
-    export class Options {
-        public count: number = 3;
-        public padding: number = 0;
-        public touch: boolean = false;
-        public buttons: boolean = true;
-        public dots: boolean = false;
-        public rewind: boolean = true;
-        public autoplay: number = 0;
+    constructor(options?: Options) {
+        if (options == null) {
+            return;
+        }
 
-        public responsive: ResponsiveMap;
-
-        /**
-         * Creates an instance of Options.
-         * @param {Options} [options] Options to copy properties.
-         * @memberof Options
-         */
-        constructor(options?: Options) {
-            if (options == null) {
-                return;
-            }
-
-            for (const prop in options) {
-                if (options.hasOwnProperty(prop) && prop !== "responsive") {
-                    (this as any)[prop] = (options as any)[prop];
-                }
-            }
-
-            // Copy responsive properties
-            if (options.responsive != null) {
-                this.responsive = new ResponsiveMap(options.responsive, this);
+        for (const prop in options) {
+            if (options.hasOwnProperty(prop) && prop !== "responsive") {
+                (this as any)[prop] = (options as any)[prop];
             }
         }
 
-        /**
-         * Finds options based on current breakpoint (screen width).
-         *
-         * @returns {Options} Carousel options.
-         * @memberof Options
-         */
-        public getBreakpointOptions(): Options {
-            if (this.responsive == null) {
-                return this;
-            }
+        // Copy responsive properties
+        if (options.responsive != null) {
+            this.responsive = new ResponsiveMap(options.responsive, this);
+        }
+    }
 
-            // Get current screen width
-            const screenWidth = window.innerWidth || document.body.clientWidth;
+    /**
+     * Finds options based on current breakpoint (screen width).
+     *
+     * @returns {Options} Carousel options.
+     * @memberof Options
+     */
+    public getBreakpointOptions(): Options {
+        if (this.responsive == null) {
+            return this;
+        }
 
-            // Find matched breakpoint option
-            let matchOption: Options = null;
-            let matchBreakpoint = 0;
+        // Get current screen width
+        const screenWidth = window.innerWidth || document.body.clientWidth;
 
-            for (const key in this.responsive) {
-                if (this.responsive.hasOwnProperty(key)) {
-                    const option = this.responsive[key];
-                    const breakpoint = parseInt(key, 10);
+        // Find matched breakpoint option
+        let matchOption: Options = null;
+        let matchBreakpoint = 0;
 
-                    if (breakpoint >= matchBreakpoint && breakpoint <= screenWidth) {
-                        matchOption = option;
-                        matchBreakpoint = breakpoint;
-                    }
+        for (const key in this.responsive) {
+            if (this.responsive.hasOwnProperty(key)) {
+                const option = this.responsive[key];
+                const breakpoint = parseInt(key, 10);
+
+                if (breakpoint >= matchBreakpoint && breakpoint <= screenWidth) {
+                    matchOption = option;
+                    matchBreakpoint = breakpoint;
                 }
             }
-
-            return matchOption;
         }
+
+        return matchOption;
     }
 }

@@ -1,45 +1,44 @@
-module latte {
+import { ListenerMap } from "./listener-map";
+
+/**
+ * Basic event emitter implementation.
+ *
+ * @export
+ * @class EventEmitter
+ */
+export class EventEmitter {
+    private listeners: ListenerMap = {};
 
     /**
-     * Basic event emitter implementation.
+     * Adds a new event listener.
      *
-     * @export
-     * @class EventEmitter
+     * @param {string} event Event type.
+     * @param {(data?: any) => void} listener Event listener.
+     * @memberof EventEmitter
      */
-    export class EventEmitter {
-        private listeners: ListenerMap = {};
+    public on(event: string, listener: (data?: any) => void) {
+        let bucket = this.listeners[event];
 
-        /**
-         * Adds a new event listener.
-         *
-         * @param {string} event Event type.
-         * @param {(data?: any) => void} listener Event listener.
-         * @memberof EventEmitter
-         */
-        public on(event: string, listener: (data?: any) => void) {
-            let bucket = this.listeners[event];
-
-            if (bucket == null) {
-                this.listeners[event] = bucket = [];
-            }
-
-            bucket.push(listener);
+        if (bucket == null) {
+            this.listeners[event] = bucket = [];
         }
 
-        /**
-         * Triggers all listeners by event type.
-         *
-         * @param {string} event Event type.
-         * @param {*} [data] Event data.
-         * @memberof EventEmitter
-         */
-        public trigger(event: string, data?: any) {
-            const bucket = this.listeners[event];
+        bucket.push(listener);
+    }
 
-            if (bucket != null) {
-                for (const listener of bucket) {
-                    listener(data);
-                }
+    /**
+     * Triggers all listeners by event type.
+     *
+     * @param {string} event Event type.
+     * @param {*} [data] Event data.
+     * @memberof EventEmitter
+     */
+    public trigger(event: string, data?: any) {
+        const bucket = this.listeners[event];
+
+        if (bucket != null) {
+            for (const listener of bucket) {
+                listener(data);
             }
         }
     }

@@ -1,8 +1,6 @@
 {
     "defaultSeverity": "error",
-    "extends": [
-        "tslint:recommended"
-    ],
+    "extends": ["tslint:recommended"],
     "jsRules": {},
     "rules": {
         "no-namespace": false,
@@ -10,5 +8,8 @@
         "prefer-for-of": false,
         "no-reference": false
     },
-    "rulesDirectory": []
+    "rulesDirectory": [],
+    "linterOptions": {
+        "exclude": ["node_modules/**/*.*", "dist/**/*.*"]
+    }
 }
