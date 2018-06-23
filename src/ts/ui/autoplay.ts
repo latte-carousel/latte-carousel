@@ -46,6 +46,17 @@ export class Autoplay {
     }
 
     /**
+     * Removes autoplay.
+     *
+     * @memberof Autoplay
+     */
+    public remove() {
+        if (this.intervalId > 0) {
+            clearInterval(this.intervalId);
+        }
+    }
+
+    /**
      * Interval listener.
      *
      * @private

@@ -8,6 +8,7 @@ import { Options } from "./option/options";
  * @extends {EventEmitter}
  */
 export declare class Carousel extends EventEmitter {
+    private carouselSelector;
     private carouselElement;
     private contentElement;
     private stageElement;
@@ -18,13 +19,27 @@ export declare class Carousel extends EventEmitter {
     private buttons;
     private dots;
     private autoplay;
+    private onWindowResizeListener;
     /**
      * Creates an instance of Carousel.
-     * @param {HTMLElement} carouselElement Root carousel element.
+     * @param {string} carouselSelector Root carousel element selector.
      * @param {Options} [options] Carousel options.
      * @memberof Carousel
      */
-    constructor(carouselElement: HTMLElement, options?: Options);
+    constructor(carouselSelector: string, options?: Options);
+    /**
+     * Removes carousel.
+     *
+     * @memberof Carousel
+     */
+    remove(): void;
+    /**
+     * Creates content and stage containers.
+     *
+     * @private
+     * @memberof Carousel
+     */
+    private createContainers;
     /**
      * Updates carousel.
      *
@@ -64,4 +79,12 @@ export declare class Carousel extends EventEmitter {
      * @memberof Carousel
      */
     private onCarouselNext;
+    /**
+     * Carousel goto listener.
+     *
+     * @private
+     * @param {*} data Event data.
+     * @memberof Carousel
+     */
+    private onCarouselGoto;
 }

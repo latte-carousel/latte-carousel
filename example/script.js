@@ -1,6 +1,4 @@
 window.addEventListener("DOMContentLoaded", function() {
-    var root = document.querySelector(".latte-carousel");
-
     var options = {
         count: 3,
         touch: true,
@@ -16,8 +14,11 @@ window.addEventListener("DOMContentLoaded", function() {
         },
     };
 
-    var carousel = new latte.Carousel(root, options);
+    var carousel = new latte.Carousel(".latte-carousel", options);
 
     carousel.trigger("next");
     carousel.trigger("previous");
+    carousel.trigger("goto", 0);
+
+    // carousel.remove();
 });

@@ -17,6 +17,7 @@ require("../scss/style.scss");
  * @extends {EventEmitter}
  */
 export class Carousel extends EventEmitter {
+    private carouselElement: HTMLElement;
     private contentElement: HTMLElement;
     private stageElement: HTMLElement;
     private itemElements: NodeListOf<HTMLElement>;
@@ -28,14 +29,24 @@ export class Carousel extends EventEmitter {
     private dots: Dots;
     private autoplay: Autoplay;
 
+    private onWindowResizeListener: (event: UIEvent) => void;
+
     /**
      * Creates an instance of Carousel.
-     * @param {HTMLElement} carouselElement Root carousel element.
+     * @param {string} carouselSelector Root carousel element selector.
      * @param {Options} [options] Carousel options.
      * @memberof Carousel
      */
-    constructor(private carouselElement: HTMLElement, options?: Options) {
+    constructor(private carouselSelector: string, options?: Options) {
         super();
+
+        this.carouselElement = document.querySelector(carouselSelector);
+
+        if (this.carouselElement == null) {
+            throw new Error("Missing root latte-carousel element.");
+        }
+
+        this.createContainers();
 
         this.contentElement = this.carouselElement.querySelector(".latte-content");
         this.stageElement = this.contentElement.querySelector(".latte-stage");
@@ -48,8 +59,9 @@ export class Carousel extends EventEmitter {
         this.dots = new Dots(this.carouselElement, this.stage, this.options);
         this.autoplay = new Autoplay(this.contentElement, this.stage, this.options);
 
-        // TODO: Clear event.
-        window.addEventListener("resize", this.onWindowResize.bind(this));
+        this.onWindowResizeListener = this.onWindowResize.bind(this);
+
+        window.addEventListener("resize", this.onWindowResizeListener);
 
         this.stage.on("move", this.onStageMove.bind(this));
 
@@ -57,6 +69,36 @@ export class Carousel extends EventEmitter {
 
         this.on("previous", this.onCarouselPrevious.bind(this));
         this.on("next", this.onCarouselNext.bind(this));
+        this.on("goto", this.onCarouselGoto.bind(this));
+    }
+
+    /**
+     * Removes carousel.
+     *
+     * @memberof Carousel
+     */
+    public remove() {
+        this.autoplay.remove();
+
+        window.removeEventListener("resize", this.onWindowResizeListener);
+
+        this.carouselElement.remove();
+    }
+
+    /**
+     * Creates content and stage containers.
+     *
+     * @private
+     * @memberof Carousel
+     */
+    private createContainers() {
+        this.carouselElement.innerHTML = `
+            <div class="latte-content">
+                <div class="latte-stage">
+                    ${this.carouselElement.innerHTML}
+                </div>
+            </div>
+        `;
     }
 
     /**
@@ -119,5 +161,16 @@ export class Carousel extends EventEmitter {
      */
     private onCarouselNext(data: any) {
         this.stage.move(1);
+    }
+
+    /**
+     * Carousel goto listener.
+     *
+     * @private
+     * @param {*} data Event data.
+     * @memberof Carousel
+     */
+    private onCarouselGoto(data: any) {
+        this.stage.moveTo(data as number);
     }
 }

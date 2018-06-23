@@ -28,6 +28,12 @@ export declare class Autoplay {
      */
     update(): void;
     /**
+     * Removes autoplay.
+     *
+     * @memberof Autoplay
+     */
+    remove(): void;
+    /**
      * Interval listener.
      *
      * @private

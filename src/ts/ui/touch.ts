@@ -25,9 +25,9 @@ export class Touch {
      * @memberof Touch
      */
     constructor(private contentElement: HTMLElement, private stage: Stage, private options: Options) {
-        this.contentElement.addEventListener("touchstart", this.onTouchStart.bind(this));
-        this.contentElement.addEventListener("touchmove", this.onTouchMove.bind(this));
-        this.contentElement.addEventListener("touchend", this.onTouchEnd.bind(this));
+        this.contentElement.addEventListener("touchstart", this.onTouchStart.bind(this), { passive: true });
+        this.contentElement.addEventListener("touchmove", this.onTouchMove.bind(this), { passive: true });
+        this.contentElement.addEventListener("touchend", this.onTouchEnd.bind(this), { passive: true });
 
         this.update();
     }
@@ -68,7 +68,6 @@ export class Touch {
         const deltaX = touch.pageX - this.previousX;
         const deltaY = touch.pageY - this.previousY;
 
-        // TODO: Lock vertical scroll while dragging carousel.
         if (this.currentOptions.touch) {
             this.dragging = true;
 

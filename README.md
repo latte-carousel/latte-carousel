@@ -13,20 +13,14 @@ LatteCarousel is a lightweight and responsive carousel without any dependencies.
 <script src="latte-carousel.min.js"></script>
 
 <div class="latte-carousel">
-    <div class="latte-content">
-        <div class="latte-stage">
-            <div class="latte-item"></div>
-            <div class="latte-item"></div>
-            <div class="latte-item"></div>
-            <div class="latte-item"></div>
-        </div>
-    </div>
+    <div class="latte-item"></div>
+    <div class="latte-item"></div>
+    <div class="latte-item"></div>
+    <div class="latte-item"></div>
 </div>
 ```
 
 ```js
-let root = document.querySelector(".latte-carousel");
-
 let options = {
     count: 3, // number of visible items
     touch: true, // enable touch support
@@ -43,10 +37,13 @@ let options = {
     },
 };
 
-let carousel = new latte.Carousel(root, options);
+let carousel = new latte.Carousel(".latte-carousel", options);
 
 carousel.trigger("next");
 carousel.trigger("previous");
+carousel.trigger("goto", 0);
+
+carousel.remove();
 ```
 
 ## Features
