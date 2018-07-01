@@ -16,7 +16,7 @@ export class Touch {
 
     private distanceX = 0;
     private distanceY = 0;
-    private minDistance = 15;
+    private minDistance = 20;
 
     private state: "free" | "drag" | "lock" = "free";
 
@@ -54,7 +54,8 @@ export class Touch {
     private onTouchStart(event: TouchEvent) {
         const touch = event.touches[0];
 
-        this.firstX = this.previousX = touch.pageX;
+        this.firstX = this.previousX = touch.clientX;
+        this.previousY = touch.clientY;
 
         this.distanceX = this.distanceY = 0;
     }
@@ -69,8 +70,8 @@ export class Touch {
     private onTouchMove(event: TouchEvent) {
         const touch = event.touches[0];
 
-        const deltaX = touch.pageX - this.previousX;
-        const deltaY = touch.pageY - this.previousY;
+        const deltaX = touch.clientX - this.previousX;
+        const deltaY = touch.clientY - this.previousY;
 
         this.distanceX += Math.abs(deltaX);
         this.distanceY += Math.abs(deltaY);
@@ -90,14 +91,16 @@ export class Touch {
 
             // Lock scroll on touch move
             if (this.state === "drag") {
-                event.preventDefault();
+                if (event.cancelable) {
+                    event.preventDefault();
+                }
 
                 this.stage.drag(deltaX);
             }
         }
 
-        this.previousX = touch.pageX;
-        this.previousY = touch.pageY;
+        this.previousX = touch.clientX;
+        this.previousY = touch.clientY;
     }
 
     /**
