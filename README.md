@@ -74,7 +74,7 @@ Build project:
 yarn run build
 ```
 
-Run examples:
+Run example:
 
 ```sh
 yarn run serve
