@@ -1,4 +1,6 @@
 [![Build Status](https://travis-ci.com/latte-carousel/latte-carousel.svg?branch=master)](https://travis-ci.com/latte-carousel/latte-carousel)
+[![npm](https://img.shields.io/npm/v/latte-carousel.svg)](https://npmjs.com/package/latte-carousel)
+[![npm](https://img.shields.io/npm/l/latte-carousel.svg)](https://github.com/latte-carousel/latte-carousel/blob/master/LICENSE)
 
 ![LatteCarousel](https://latte-carousel.github.io/img/colored_small.png "LatteCarousel")
 
@@ -74,7 +76,7 @@ Build project:
 yarn run build
 ```
 
-Run examples:
+Run example:
 
 ```sh
 yarn run serve

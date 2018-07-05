@@ -12,10 +12,12 @@ export declare class Touch {
     private options;
     private currentOptions;
     private firstX;
-    private firstY;
     private previousX;
     private previousY;
-    private dragging;
+    private distanceX;
+    private distanceY;
+    private minDistance;
+    private state;
     /**
      * Creates an instance of Touch.
      * @param {HTMLElement} contentElement Content element.
