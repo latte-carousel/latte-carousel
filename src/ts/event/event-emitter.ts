@@ -1,4 +1,4 @@
-import { ListenerMap } from "./listener-map";
+import { IListenerMap } from "./listener-map";
 
 /**
  * Basic event emitter implementation.
@@ -7,7 +7,7 @@ import { ListenerMap } from "./listener-map";
  * @class EventEmitter
  */
 export class EventEmitter {
-    private listeners: ListenerMap = {};
+    private listeners: IListenerMap = {};
 
     /**
      * Adds a new event listener.

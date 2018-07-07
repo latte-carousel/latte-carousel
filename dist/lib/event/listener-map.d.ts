@@ -2,8 +2,8 @@
  * Listener map used by event emitter.
  *
  * @export
- * @class ListenerMap
+ * @interface ListenerMap
  */
-export declare class ListenerMap {
+export interface IListenerMap {
     [event: string]: Array<(data?: any) => void>;
 }

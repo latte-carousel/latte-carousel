@@ -37,7 +37,7 @@ export class Carousel extends EventEmitter {
      * @param {Options} [options] Carousel options.
      * @memberof Carousel
      */
-    constructor(private carouselSelector: string, options?: Options) {
+    constructor(carouselSelector: string, options?: Options) {
         super();
 
         this.carouselElement = document.querySelector(carouselSelector);

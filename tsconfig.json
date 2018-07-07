@@ -9,5 +9,5 @@
         "sourceMap": true,
         "declaration": true
     },
-    "exclude": ["./dist", "./examples"]
+    "exclude": ["./dist", "./examples", "./test"]
 }
