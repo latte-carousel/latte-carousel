@@ -8,7 +8,6 @@ import { Options } from "./option/options";
  * @extends {EventEmitter}
  */
 export declare class Carousel extends EventEmitter {
-    private carouselSelector;
     private carouselElement;
     private contentElement;
     private stageElement;
