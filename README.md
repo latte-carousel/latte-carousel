@@ -2,7 +2,9 @@
 [![npm](https://img.shields.io/npm/v/latte-carousel.svg)](https://npmjs.com/package/latte-carousel)
 [![npm](https://img.shields.io/npm/l/latte-carousel.svg)](https://github.com/latte-carousel/latte-carousel/blob/master/LICENSE)
 
-![LatteCarousel](https://latte-carousel.github.io/img/colored_small.png "LatteCarousel")
+<p align="center">
+    <img src="https://latte-carousel.github.io/img/colored_small.png" alt="LatteCarousel"/>
+</p>
 
 # About
 
@@ -11,9 +13,17 @@ LatteCarousel is a lightweight and responsive carousel without any dependencies.
 ## Usage
 
 ```html
+<!-- Package -->
 <link rel="stylesheet" href="latte-carousel.min.css">
 <script src="latte-carousel.min.js"></script>
 
+<!-- CDN -->
+<link rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/latte-carousel@1.0.1/dist/latte-carousel.min.css">
+<script src="https://cdn.jsdelivr.net/npm/latte-carousel@1.0.1/dist/latte-carousel.min.js"></script>
+```
+
+```html
 <div class="latte-carousel" id="carousel">
     <div class="latte-item"></div>
     <div class="latte-item"></div>
