@@ -33,14 +33,18 @@ export class Carousel extends EventEmitter {
 
     /**
      * Creates an instance of Carousel.
-     * @param {string} carouselSelector Root carousel element selector.
+     * @param {(string | HTMLElement)} elementOrSelector Root carousel element or selector.
      * @param {Options} [options] Carousel options.
      * @memberof Carousel
      */
-    constructor(carouselSelector: string, options?: Options) {
+    constructor(elementOrSelector: string | HTMLElement, options?: Options) {
         super();
 
-        this.carouselElement = document.querySelector(carouselSelector);
+        if (typeof elementOrSelector === "string") {
+            this.carouselElement = document.querySelector(elementOrSelector);
+        } else {
+            this.carouselElement = elementOrSelector;
+        }
 
         if (this.carouselElement == null) {
             throw new Error("Missing root latte-carousel element.");
@@ -81,6 +85,8 @@ export class Carousel extends EventEmitter {
         this.autoplay.remove();
 
         window.removeEventListener("resize", this.onWindowResizeListener);
+
+        this.off();
 
         this.carouselElement.remove();
     }

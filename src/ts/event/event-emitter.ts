@@ -42,4 +42,13 @@ export class EventEmitter {
             }
         }
     }
+
+    /**
+     * Clears all listeners.
+     *
+     * @memberof EventEmitter
+     */
+    public off() {
+        this.listeners = {};
+    }
 }

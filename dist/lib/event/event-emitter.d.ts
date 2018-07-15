@@ -22,4 +22,10 @@ export declare class EventEmitter {
      * @memberof EventEmitter
      */
     trigger(event: string, data?: any): void;
+    /**
+     * Clears all listeners.
+     *
+     * @memberof EventEmitter
+     */
+    off(): void;
 }
