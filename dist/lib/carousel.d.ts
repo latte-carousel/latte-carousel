@@ -21,11 +21,11 @@ export declare class Carousel extends EventEmitter {
     private onWindowResizeListener;
     /**
      * Creates an instance of Carousel.
-     * @param {string} carouselSelector Root carousel element selector.
+     * @param {(string | HTMLElement)} elementOrSelector Root carousel element or selector.
      * @param {Options} [options] Carousel options.
      * @memberof Carousel
      */
-    constructor(carouselSelector: string, options?: Options);
+    constructor(elementOrSelector: string | HTMLElement, options?: Options);
     /**
      * Removes carousel.
      *
