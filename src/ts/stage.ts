@@ -23,14 +23,14 @@ export class Stage extends EventEmitter {
      * Creates an instance of Stage.
      * @param {HTMLElement} contentElement Content element.
      * @param {HTMLElement} stageElement Stage element.
-     * @param {NodeListOf<HTMLElement>} itemElements Items elements.
+     * @param {HTMLCollection} itemElements Items elements.
      * @param {Options} options Carousel options.
      * @memberof Stage
      */
     constructor(
         private contentElement: HTMLElement,
         private stageElement: HTMLElement,
-        private itemElements: NodeListOf<HTMLElement>,
+        private itemElements: HTMLCollection,
         private options: Options,
     ) {
         super();
@@ -53,7 +53,9 @@ export class Stage extends EventEmitter {
 
         // Apply size
         for (let i = 0; i < this.itemElements.length; i++) {
-            this.itemElements[i].style.width = this.itemSize + "px";
+            const itemElement = this.itemElements[i] as HTMLElement;
+
+            itemElement.style.width = this.itemSize + "px";
         }
 
         this.stageElement.style.width = this.stageSize + "px";
