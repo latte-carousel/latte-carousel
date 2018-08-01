@@ -20,7 +20,7 @@ export class Carousel extends EventEmitter {
     private carouselElement: HTMLElement;
     private contentElement: HTMLElement;
     private stageElement: HTMLElement;
-    private itemElements: NodeListOf<HTMLElement>;
+    private itemElements: HTMLCollection;
 
     private options: Options;
     private stage: Stage;
@@ -28,6 +28,8 @@ export class Carousel extends EventEmitter {
     private buttons: Buttons;
     private dots: Dots;
     private autoplay: Autoplay;
+
+    private originalHtml: string;
 
     private onWindowResizeListener: (event: UIEvent) => void;
 
@@ -50,11 +52,13 @@ export class Carousel extends EventEmitter {
             throw new Error("Missing root latte-carousel element.");
         }
 
+        this.originalHtml = this.carouselElement.innerHTML;
+
         this.createContainers();
 
-        this.contentElement = this.carouselElement.querySelector(".latte-content");
-        this.stageElement = this.contentElement.querySelector(".latte-stage");
-        this.itemElements = this.stageElement.querySelectorAll(".latte-item");
+        this.contentElement = this.carouselElement.children[0] as HTMLElement;
+        this.stageElement = this.contentElement.children[0] as HTMLElement;
+        this.itemElements = this.stageElement.children;
 
         this.options = new Options(options);
         this.stage = new Stage(this.contentElement, this.stageElement, this.itemElements, this.options);
@@ -88,7 +92,7 @@ export class Carousel extends EventEmitter {
 
         this.off();
 
-        this.carouselElement.remove();
+        this.carouselElement.innerHTML = this.originalHtml;
     }
 
     /**

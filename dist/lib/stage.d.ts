@@ -22,11 +22,11 @@ export declare class Stage extends EventEmitter {
      * Creates an instance of Stage.
      * @param {HTMLElement} contentElement Content element.
      * @param {HTMLElement} stageElement Stage element.
-     * @param {NodeListOf<HTMLElement>} itemElements Items elements.
+     * @param {HTMLCollection} itemElements Items elements.
      * @param {Options} options Carousel options.
      * @memberof Stage
      */
-    constructor(contentElement: HTMLElement, stageElement: HTMLElement, itemElements: NodeListOf<HTMLElement>, options: Options);
+    constructor(contentElement: HTMLElement, stageElement: HTMLElement, itemElements: HTMLCollection, options: Options);
     /**
      * Updates stage computing options and position.
      *

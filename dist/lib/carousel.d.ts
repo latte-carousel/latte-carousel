@@ -18,6 +18,7 @@ export declare class Carousel extends EventEmitter {
     private buttons;
     private dots;
     private autoplay;
+    private originalHtml;
     private onWindowResizeListener;
     /**
      * Creates an instance of Carousel.
