@@ -10,7 +10,7 @@
     "license": "MIT",
     "private": false,
     "main": "dist/latte-carousel.min.js",
-    "types": "dist/lib/carousel.d.ts",
+    "types": "dist/lib/index.d.ts",
     "keywords": [
         "carousel",
         "responsive",

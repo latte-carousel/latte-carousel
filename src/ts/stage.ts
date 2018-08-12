@@ -100,7 +100,7 @@ export class Stage extends EventEmitter {
         this.currentIndex = Math.min(Math.max(firstIndex, this.currentIndex), lastIndex);
         this.currentPosition = this.currentIndex * this.itemSize * -1;
 
-        const duration = tween ? 300 : 0;
+        const duration = tween ? this.currentOptions.animation : 0;
         Tween.translate(this.stageElement, this.currentPosition, 0, duration);
 
         this.trigger("move");

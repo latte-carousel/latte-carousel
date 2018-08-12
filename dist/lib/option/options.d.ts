@@ -13,6 +13,7 @@ export declare class Options {
     dots: boolean;
     rewind: boolean;
     autoplay: number;
+    animation: number;
     responsive: ResponsiveMap;
     /**
      * Creates an instance of Options.

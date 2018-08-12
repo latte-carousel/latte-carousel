@@ -14,6 +14,7 @@ export class Options {
     public dots: boolean = false;
     public rewind: boolean = true;
     public autoplay: number = 0;
+    public animation: number = 500;
 
     public responsive: ResponsiveMap;
 

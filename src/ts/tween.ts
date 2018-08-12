@@ -131,11 +131,11 @@ export class Tween {
      * @memberof Tween
      */
     private static interpolate(source: number, dest: number, amount: number): number {
-        return this.easeInOutQuad(amount, source, dest - source, 1);
+        return this.easeOutCubic(amount, source, dest - source, 1);
     }
 
     /**
-     * Quadratic easing in/out function.
+     * Cubic easing out function.
      * Inspired from: http://robertpenner.com/easing/penner_easing_as1.txt
      *
      * @private
@@ -147,12 +147,7 @@ export class Tween {
      * @returns {number} Interpolated value.
      * @memberof Tween
      */
-    private static easeInOutQuad(t: number, b: number, c: number, d: number): number {
-        t /= d / 2;
-        if (t < 1) {
-            return (c / 2) * t * t + b;
-        }
-        t--;
-        return (-c / 2) * (t * (t - 2) - 1) + b;
+    private static easeOutCubic(t: number, b: number, c: number, d: number): number {
+        return c * ((t = t / d - 1) * t * t + 1) + b;
     }
 }
