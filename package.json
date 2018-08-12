@@ -1,6 +1,6 @@
 {
     "name": "latte-carousel",
-    "version": "1.1.1",
+    "version": "1.2.0",
     "description": "LatteCarousel is a lightweight and responsive carousel.",
     "repository": "https://github.com/latte-carousel/latte-carousel.git",
     "author": {
@@ -10,7 +10,7 @@
     "license": "MIT",
     "private": false,
     "main": "dist/latte-carousel.min.js",
-    "types": "dist/lib/carousel.d.ts",
+    "types": "dist/lib/index.d.ts",
     "keywords": [
         "carousel",
         "responsive",

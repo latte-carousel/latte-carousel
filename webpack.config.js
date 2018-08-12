@@ -6,7 +6,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
     mode: "production",
-    entry: "./src/ts/carousel.ts",
+    entry: "./src/ts/index.ts",
     devtool: "source-map",
     module: {
         rules: [

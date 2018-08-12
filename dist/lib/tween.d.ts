@@ -68,7 +68,7 @@ export declare class Tween {
      */
     private static interpolate;
     /**
-     * Quadratic easing in/out function.
+     * Cubic easing out function.
      * Inspired from: http://robertpenner.com/easing/penner_easing_as1.txt
      *
      * @private
@@ -80,5 +80,5 @@ export declare class Tween {
      * @returns {number} Interpolated value.
      * @memberof Tween
      */
-    private static easeInOutQuad;
+    private static easeOutCubic;
 }
