@@ -19,8 +19,8 @@ LatteCarousel is a lightweight and responsive carousel without any dependencies.
 
 <!-- CDN -->
 <link rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/latte-carousel@1.2.0/dist/latte-carousel.min.css">
-<script src="https://cdn.jsdelivr.net/npm/latte-carousel@1.2.0/dist/latte-carousel.min.js"></script>
+      href="https://cdn.jsdelivr.net/npm/latte-carousel@1.2.1/dist/latte-carousel.min.css">
+<script src="https://cdn.jsdelivr.net/npm/latte-carousel@1.2.1/dist/latte-carousel.min.js"></script>
 ```
 
 ```html
@@ -40,6 +40,7 @@ var options = {
     dots: true,
     rewind: true,
     autoplay: 0,
+    animation: 500,
     responsive: {
         "0": { count: 1.5, buttons: false },
         "480": { count: 2.5, buttons: false },
@@ -57,6 +58,10 @@ carousel.trigger("goto", 0);
 
 carousel.remove();
 ```
+
+You can also include latte-carousel using ES6 import and Babel or Webpack.
+
+This package already includes .d.ts files.
 
 ## Features
 
@@ -90,6 +95,8 @@ Run example:
 
 ```sh
 yarn run serve
+
+open http://localhost:8080/example
 ```
 
 Result files:
