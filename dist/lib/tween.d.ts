@@ -1,3 +1,6 @@
+export interface ITweenElement extends HTMLElement {
+    tweenId: number;
+}
 /**
  * Basic tweening implementation.
  *
@@ -17,12 +20,21 @@ export declare class Tween {
      */
     static translate(element: HTMLElement, x: number, y: number, duration: number): void;
     /**
+     * Unique animation ID.
+     *
+     * @private
+     * @static
+     * @type {number}
+     * @memberof Tween
+     */
+    private static animationId;
+    /**
      * Animates using callback loop.
      *
      * @private
      * @static
      * @param {number} duration Duration in millis.
-     * @param {(progress: number) => void} callback Animation callback.
+     * @param {(progress: number) => boolean} callback Animation callback. Must return true for animation to continue.
      * @memberof Tween
      */
     private static animate;

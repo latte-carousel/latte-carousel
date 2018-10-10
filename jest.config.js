@@ -15,6 +15,4 @@ module.exports = {
     collectCoverage: true,
     collectCoverageFrom: ["<rootDir>/src/**/*.ts", "!<rootDir>/node_modules/**"],
     coverageReporters: ["text", "text-summary"],
-
-    clearMocks: true,
 };
