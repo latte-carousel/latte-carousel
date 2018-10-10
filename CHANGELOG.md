@@ -7,11 +7,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.3.0] - 2018-10-10
+
+### Added
+
+-   Action to cancel tweens
+
+### Changed
+
+-   Updated dependencies
+
 ## [1.2.1] - 2018-08-18
 
 ### Added
 
--   CHANGELOG file.
+-   CHANGELOG file
 -   Setting for animation duration
 
 ### Changed
@@ -104,7 +114,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 -   Basic carousel support
 -   Build tasks
 
-[unreleased]: https://github.com/latte-carousel/latte-carousel/compare/v1.2.1...develop
+[unreleased]: https://github.com/latte-carousel/latte-carousel/compare/v1.3.0...develop
+[1.3.0]: https://github.com/latte-carousel/latte-carousel/compare/v1.2.1...v1.3.0
 [1.2.1]: https://github.com/latte-carousel/latte-carousel/compare/v1.2.0...v1.2.1
 [1.2.0]: https://github.com/latte-carousel/latte-carousel/compare/v1.1.1...v1.2.0
 [1.1.1]: https://github.com/latte-carousel/latte-carousel/compare/v1.1.0...v1.1.1
