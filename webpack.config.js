@@ -42,5 +42,6 @@ module.exports = {
         filename: "latte-carousel.min.js",
         library: "latte",
         libraryTarget: "umd",
+        globalObject: `(typeof window !== "undefined" ? window : this)`,
     },
 };

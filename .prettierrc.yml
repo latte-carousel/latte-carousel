@@ -3,6 +3,6 @@ tabWidth: 4
 trailingComma: "es5"
 arrowParens: "always"
 overrides:
-- files: "*.ts"
-  options:
-    trailingComma: "all"
+    - files: "*.ts"
+      options:
+          trailingComma: "all"
