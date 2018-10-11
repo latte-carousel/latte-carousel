@@ -1,3 +1,7 @@
+export interface ITweenElement extends HTMLElement {
+    tweenId: number;
+}
+
 /**
  * Basic tweening implementation.
  *
@@ -17,16 +21,35 @@ export class Tween {
      */
     public static translate(element: HTMLElement, x: number, y: number, duration: number) {
         const source = this.getTranslate(element);
+        const id = this.animationId++;
+
+        (element as ITweenElement).tweenId = id;
 
         this.animate(duration, (progress) => {
+            if ((element as ITweenElement).tweenId !== id) {
+                return false;
+            }
+
             const value = {
                 x: this.interpolate(source.x, x, progress),
                 y: this.interpolate(source.y, y, progress),
             };
 
             this.setTranslate(element, value);
+
+            return true;
         });
     }
+
+    /**
+     * Unique animation ID.
+     *
+     * @private
+     * @static
+     * @type {number}
+     * @memberof Tween
+     */
+    private static animationId: number = 1;
 
     /**
      * Animates using callback loop.
@@ -34,10 +57,10 @@ export class Tween {
      * @private
      * @static
      * @param {number} duration Duration in millis.
-     * @param {(progress: number) => void} callback Animation callback.
+     * @param {(progress: number) => boolean} callback Animation callback. Must return true for animation to continue.
      * @memberof Tween
      */
-    private static animate(duration: number, callback: (progress: number) => void) {
+    private static animate(duration: number, callback: (progress: number) => boolean) {
         if (duration === 0) {
             callback(1);
             return;
@@ -50,9 +73,9 @@ export class Tween {
             const relative = (now - start) / duration;
             const progress = Math.min(relative, 1);
 
-            callback(progress);
+            const shouldContinue = callback(progress);
 
-            if (progress < 1) {
+            if (progress < 1 && shouldContinue) {
                 this.requestFrame(loop);
             }
         };
