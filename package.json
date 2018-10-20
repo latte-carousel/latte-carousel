@@ -20,25 +20,27 @@
     ],
     "homepage": "https://latte-carousel.github.io",
     "scripts": {
-        "build": "parcel build src/ts/index.ts --global latte -o latte-carousel.min.js && yarn run build:types",
-        "build:types": "dts-generator --name latte --project . --out dist/latte-carousel.d.ts",
-        "watch": "parcel watch src/ts/index.ts",
+        "build": "yarn run build:ts && yarn run build:dts",
+        "build:ts": "parcel build \"src/ts/index.ts\" --global \"latte\" -o \"latte-carousel.min.js\"",
+        "build:dts": "dts-generator --name \"latte\" --project \".\" --out \"dist/latte-carousel.d.ts\"",
+        "watch": "parcel watch \"src/ts/index.ts\"",
         "serve": "http-server \"./\"",
         "test": "jest",
         "format": "yarn run format:prettier && yarn run format:csscomb",
         "format:prettier": "prettier --find-config-path --write \"./src/**\" \"./test/**\" \"./example/**\"",
         "format:csscomb": "csscomb \"./src/scss\" \"./example\"",
         "lint": "yarn run lint:tsc && yarn run lint:tslint && yarn run lint:eslint",
-        "lint:tsc": "tsc -p tsconfig.json --noEmit",
+        "lint:tsc": "tsc -p \"tsconfig.json\" --noEmit",
         "lint:tslint": "tslint -c \"tslint.json\" \"./**/*.ts\"",
         "lint:eslint": "eslint \"./**/*.js\""
     },
     "devDependencies": {
-        "@types/jest": "^23.3.3",
+        "@types/jest": "^23.3.5",
         "autoprefixer": "^9.2.1",
         "csscomb": "^4.2.0",
         "cssnano": "^4.1.5",
-        "eslint": "^5.6.1",
+        "dts-generator": "^2.1.0",
+        "eslint": "^5.7.0",
         "http-server": "^0.11.1",
         "jest": "^23.6.0",
         "parcel-bundler": "^1.10.3",
@@ -47,7 +49,6 @@
         "sass": "^1.14.3",
         "ts-jest": "^23.10.4",
         "tslint": "^5.11.0",
-        "typescript": "^3.1.1",
-        "dts-generator": "^2.1.0"
+        "typescript": "^3.1.3"
     }
 }
