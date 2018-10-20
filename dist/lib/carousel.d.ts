@@ -87,4 +87,20 @@ export declare class Carousel extends EventEmitter {
      * @memberof Carousel
      */
     private onCarouselGoto;
+    /**
+     * Carousel update listener.
+     *
+     * @private
+     * @param {*} data Event data.
+     * @memberof Carousel
+     */
+    private onCarouselUpdate;
+    /**
+     * Carousel remove listener.
+     *
+     * @private
+     * @param {*} data Event data.
+     * @memberof Carousel
+     */
+    private onCarouselRemove;
 }
