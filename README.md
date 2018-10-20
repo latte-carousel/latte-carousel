@@ -56,7 +56,9 @@ carousel.trigger("previous");
 
 carousel.trigger("goto", 0);
 
-carousel.remove();
+carousel.trigger("update");
+
+carousel.trigger("remove");
 ```
 
 You can also include latte-carousel using ES6 import and Babel or Webpack.

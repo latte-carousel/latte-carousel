@@ -52,6 +52,10 @@ export class Carousel extends EventEmitter {
             throw new Error("Missing root latte-carousel element.");
         }
 
+        if (this.carouselElement.querySelector(".latte-content") != null) {
+            throw new Error("Cannot create multiple instances using the same latte-carousel element.");
+        }
+
         this.originalHtml = this.carouselElement.innerHTML;
 
         this.createContainers();
@@ -78,6 +82,8 @@ export class Carousel extends EventEmitter {
         this.on("previous", this.onCarouselPrevious.bind(this));
         this.on("next", this.onCarouselNext.bind(this));
         this.on("goto", this.onCarouselGoto.bind(this));
+        this.on("update", this.onCarouselUpdate.bind(this));
+        this.on("remove", this.onCarouselRemove.bind(this));
     }
 
     /**
@@ -182,5 +188,27 @@ export class Carousel extends EventEmitter {
      */
     private onCarouselGoto(data: any) {
         this.stage.moveTo(data as number);
+    }
+
+    /**
+     * Carousel update listener.
+     *
+     * @private
+     * @param {*} data Event data.
+     * @memberof Carousel
+     */
+    private onCarouselUpdate(data: any) {
+        this.update();
+    }
+
+    /**
+     * Carousel remove listener.
+     *
+     * @private
+     * @param {*} data Event data.
+     * @memberof Carousel
+     */
+    private onCarouselRemove(data: any) {
+        this.remove();
     }
 }

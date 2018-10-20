@@ -1,11 +1,14 @@
 module.exports = {
     globals: {
         "ts-jest": {
-            tsConfigFile: "tsconfig.json",
+            tsConfig: "tsconfig.json",
         },
     },
 
     moduleFileExtensions: ["ts", "tsx", "js"],
+    moduleNameMapper: {
+        "\\.(css|scss)$": "identity-obj-proxy",
+    },
 
     testMatch: ["<rootDir>/test/**/*.test.ts"],
     transform: {
