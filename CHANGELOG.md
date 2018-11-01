@@ -7,6 +7,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.4.1] - 2018-11-01
+
+### Fixed
+
+-   Stage when carousel has fewer items than specified count from [@MatheusBordin](https://github.com/MatheusBordin).
+
+## [1.4.0] - 2018-10-20
+
+### Added
+
+-   New carousel trigger events
+-   Validation to avoid creating multiple instances using the same element
+
+### Changed
+
+-   Updated dependencies
+-   Webpack CLI
+-   Jest config to mock .scss imports
+
 ## [1.3.0] - 2018-10-10
 
 ### Added
@@ -114,7 +133,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 -   Basic carousel support
 -   Build tasks
 
-[unreleased]: https://github.com/latte-carousel/latte-carousel/compare/v1.3.0...develop
+[unreleased]: https://github.com/latte-carousel/latte-carousel/compare/v1.4.1...develop
+[1.4.1]: https://github.com/latte-carousel/latte-carousel/compare/v1.4.0...v1.4.1
+[1.4.0]: https://github.com/latte-carousel/latte-carousel/compare/v1.3.0...v1.4.0
 [1.3.0]: https://github.com/latte-carousel/latte-carousel/compare/v1.2.1...v1.3.0
 [1.2.1]: https://github.com/latte-carousel/latte-carousel/compare/v1.2.0...v1.2.1
 [1.2.0]: https://github.com/latte-carousel/latte-carousel/compare/v1.1.1...v1.2.0
