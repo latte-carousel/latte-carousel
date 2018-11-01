@@ -41,7 +41,7 @@ export class Autoplay {
         }
 
         if (this.currentOptions.autoplay > 0) {
-            this.intervalId = setInterval(this.onInterval.bind(this), this.currentOptions.autoplay);
+            this.intervalId = window.setInterval(this.onInterval.bind(this), this.currentOptions.autoplay);
         }
     }
 
