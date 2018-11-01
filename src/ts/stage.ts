@@ -169,6 +169,6 @@ export class Stage extends EventEmitter {
      * @memberof Stage
      */
     public last(): number {
-        return this.itemElements.length - this.currentOptions.count;
+        return Math.max(0, this.itemElements.length - this.currentOptions.count);
     }
 }
