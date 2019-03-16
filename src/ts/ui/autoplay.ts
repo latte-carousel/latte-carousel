@@ -64,7 +64,7 @@ export class Autoplay {
      */
     private onInterval() {
         if (!this.mouseOver) {
-            this.stage.move(1);
+            this.stage.move(this.currentOptions.move);
         }
     }
 

@@ -6,15 +6,16 @@ import { ResponsiveMap } from "./responsive-map";
  * @class Options
  */
 export declare class Options {
-    count: number;
-    padding: number;
-    touch: boolean;
-    buttons: boolean;
-    dots: boolean;
-    rewind: boolean;
-    autoplay: number;
-    animation: number;
-    responsive: ResponsiveMap;
+    count?: number;
+    move?: number;
+    padding?: number;
+    touch?: boolean;
+    buttons?: boolean;
+    dots?: boolean;
+    rewind?: boolean;
+    autoplay?: number;
+    animation?: number;
+    responsive?: ResponsiveMap;
     /**
      * Creates an instance of Options.
      * @param {Options} [options] Options to copy properties.

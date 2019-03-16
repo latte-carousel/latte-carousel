@@ -88,10 +88,14 @@ export class Stage extends EventEmitter {
 
         // Rewind index
         if (this.currentOptions.rewind) {
-            index = index % (lastIndex + 1);
-
-            if (index < 0) {
-                index = lastIndex + 1 + index;
+            if (index === lastIndex + this.currentOptions.move) {
+                index = 0;
+            } else if (index >= lastIndex) {
+                index = lastIndex;
+            } else if (index === -this.currentOptions.move) {
+                index = lastIndex;
+            } else if (index <= 0) {
+                index = 0;
             }
         }
 

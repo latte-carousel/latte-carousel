@@ -14,12 +14,11 @@ LatteCarousel is a lightweight and responsive carousel without any dependencies.
 
 ```html
 <!-- Package -->
-<link rel="stylesheet" href="latte-carousel.min.css">
+<link rel="stylesheet" href="latte-carousel.min.css" />
 <script src="latte-carousel.min.js"></script>
 
 <!-- CDN -->
-<link rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/latte-carousel@1.4.1/dist/latte-carousel.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/latte-carousel@1.4.1/dist/latte-carousel.min.css" />
 <script src="https://cdn.jsdelivr.net/npm/latte-carousel@1.4.1/dist/latte-carousel.min.js"></script>
 ```
 
@@ -35,6 +34,7 @@ LatteCarousel is a lightweight and responsive carousel without any dependencies.
 ```js
 var options = {
     count: 3,
+    move: 1,
     touch: true,
     buttons: true,
     dots: true,
