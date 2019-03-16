@@ -21,5 +21,17 @@ window.addEventListener("DOMContentLoaded", function() {
     carousel.trigger("previous");
     carousel.trigger("goto", 0);
 
+    carousel.on("drag", function() {
+        console.log("drag");
+    });
+
+    carousel.on("move", function() {
+        console.log("move");
+    });
+
+    carousel.on("moved", function() {
+        console.log("moved");
+    });
+
     // carousel.remove();
 });

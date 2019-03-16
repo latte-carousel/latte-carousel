@@ -17,6 +17,9 @@
             },
             "globals": {
                 "latte": true
+            },
+            "rules": {
+                "no-console": "off"
             }
         }
     ]

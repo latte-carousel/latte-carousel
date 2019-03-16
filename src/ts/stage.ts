@@ -105,7 +105,9 @@ export class Stage extends EventEmitter {
         this.currentPosition = this.currentIndex * this.itemSize * -1;
 
         const duration = tween ? this.currentOptions.animation : 0;
-        Tween.translate(this.stageElement, this.currentPosition, 0, duration);
+        Tween.translate(this.stageElement, this.currentPosition, 0, duration, () => {
+            this.trigger("moved");
+        });
 
         this.trigger("move");
     }
@@ -127,6 +129,8 @@ export class Stage extends EventEmitter {
         this.currentPosition = Math.min(Math.max(lastPosition, this.currentPosition), firstPosition);
 
         Tween.translate(this.stageElement, this.currentPosition, 0, 0);
+
+        this.trigger("drag");
     }
 
     /**

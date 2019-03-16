@@ -16,9 +16,10 @@ export declare class Tween {
      * @param {number} x X position.
      * @param {number} y Y position.
      * @param {number} duration Duration in millis.
+     * @param {() => void} [end] Animation end callback.
      * @memberof Tween
      */
-    static translate(element: HTMLElement, x: number, y: number, duration: number): void;
+    static translate(element: HTMLElement, x: number, y: number, duration: number, end?: () => void): void;
     /**
      * Unique animation ID.
      *
@@ -34,7 +35,8 @@ export declare class Tween {
      * @private
      * @static
      * @param {number} duration Duration in millis.
-     * @param {(progress: number) => boolean} callback Animation callback. Must return true for animation to continue.
+     * @param {(progress: number) => boolean} update Animation callback. Must return true for animation to continue.
+     * @param {() => void} [end] Animation end callback.
      * @memberof Tween
      */
     private static animate;

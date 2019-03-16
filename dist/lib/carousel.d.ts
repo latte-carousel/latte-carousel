@@ -56,6 +56,14 @@ export declare class Carousel extends EventEmitter {
      */
     private onWindowResize;
     /**
+     * Stage drag listener.
+     *
+     * @private
+     * @param {*} data Event data.
+     * @memberof Carousel
+     */
+    private onStageDrag;
+    /**
      * Stage move listener.
      *
      * @private
@@ -63,6 +71,14 @@ export declare class Carousel extends EventEmitter {
      * @memberof Carousel
      */
     private onStageMove;
+    /**
+     * Stage moved listener.
+     *
+     * @private
+     * @param {*} data Event data.
+     * @memberof Carousel
+     */
+    private onStageMoved;
     /**
      * Carousel previous listener.
      *

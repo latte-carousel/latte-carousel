@@ -75,7 +75,9 @@ export class Carousel extends EventEmitter {
 
         window.addEventListener("resize", this.onWindowResizeListener);
 
+        this.stage.on("drag", this.onStageDrag.bind(this));
         this.stage.on("move", this.onStageMove.bind(this));
+        this.stage.on("moved", this.onStageMoved.bind(this));
 
         this.update();
 
@@ -147,6 +149,17 @@ export class Carousel extends EventEmitter {
     }
 
     /**
+     * Stage drag listener.
+     *
+     * @private
+     * @param {*} data Event data.
+     * @memberof Carousel
+     */
+    private onStageDrag(data: any) {
+        this.trigger("drag", data);
+    }
+
+    /**
      * Stage move listener.
      *
      * @private
@@ -155,6 +168,19 @@ export class Carousel extends EventEmitter {
      */
     private onStageMove(data: any) {
         this.dots.update();
+
+        this.trigger("move", data);
+    }
+
+    /**
+     * Stage moved listener.
+     *
+     * @private
+     * @param {*} data Event data.
+     * @memberof Carousel
+     */
+    private onStageMoved(data: any) {
+        this.trigger("moved", data);
     }
 
     /**

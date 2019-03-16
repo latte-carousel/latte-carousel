@@ -51,6 +51,7 @@ var options = {
 
 var carousel = new latte.Carousel("#carousel", options);
 
+// Trigger events
 carousel.trigger("next");
 carousel.trigger("previous");
 
@@ -59,6 +60,13 @@ carousel.trigger("goto", 0);
 carousel.trigger("update");
 
 carousel.trigger("remove");
+
+// Listen events
+carousel.on("drag", () => {});
+carousel.on("move", () => {});
+carousel.on("moved", () => {});
+
+carousel.off();
 ```
 
 You can also include latte-carousel using ES6 import and Babel or Webpack.

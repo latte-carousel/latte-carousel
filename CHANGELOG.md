@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 -   Move count option
 -   Default font size for latte-item children
+-   Carousel move events
 
 ### Changed
 
