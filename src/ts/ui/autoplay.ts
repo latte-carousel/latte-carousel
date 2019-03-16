@@ -37,11 +37,11 @@ export class Autoplay {
 
         // Clear current interval
         if (this.intervalId > 0) {
-            clearInterval(this.intervalId);
+            window.clearInterval(this.intervalId);
         }
 
         if (this.currentOptions.autoplay > 0) {
-            this.intervalId = setInterval(this.onInterval.bind(this), this.currentOptions.autoplay);
+            this.intervalId = window.setInterval(this.onInterval.bind(this), this.currentOptions.autoplay);
         }
     }
 
@@ -52,7 +52,7 @@ export class Autoplay {
      */
     public remove() {
         if (this.intervalId > 0) {
-            clearInterval(this.intervalId);
+            window.clearInterval(this.intervalId);
         }
     }
 
