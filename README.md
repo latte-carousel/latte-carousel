@@ -42,10 +42,10 @@ var options = {
     autoplay: 0,
     animation: 500,
     responsive: {
-        "0": { count: 1.5, buttons: false },
-        "480": { count: 2.5, buttons: false },
-        "768": { count: 3, touch: false },
-        "1440": { count: 4, touch: false },
+        "0": { count: 1.5, touch: "free", buttons: false },
+        "480": { count: 2.5, touch: "free", buttons: false },
+        "768": { count: 3, move: 3, touch: false, dots: false },
+        "1440": { count: 4, move: 2, touch: false, dots: false },
     },
 };
 
@@ -62,7 +62,6 @@ carousel.trigger("update");
 carousel.trigger("remove");
 
 // Listen events
-carousel.on("drag", () => {});
 carousel.on("move", () => {});
 carousel.on("moved", () => {});
 

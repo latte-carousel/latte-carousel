@@ -12,6 +12,7 @@ export declare class Carousel extends EventEmitter {
     private contentElement;
     private stageElement;
     private itemElements;
+    private currentOptions;
     private options;
     private stage;
     private touch;
@@ -55,14 +56,6 @@ export declare class Carousel extends EventEmitter {
      * @memberof Carousel
      */
     private onWindowResize;
-    /**
-     * Stage drag listener.
-     *
-     * @private
-     * @param {*} data Event data.
-     * @memberof Carousel
-     */
-    private onStageDrag;
     /**
      * Stage move listener.
      *

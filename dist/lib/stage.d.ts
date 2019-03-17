@@ -57,12 +57,28 @@ export declare class Stage extends EventEmitter {
      */
     drag(delta: number): void;
     /**
-     * Finishes carousel drag.
+     * Finishes carousel drag with align mode.
      *
      * @param {boolean} movedLeft If carousel moved to the left.
      * @memberof Stage
      */
-    dragEnd(movedLeft: boolean): void;
+    dragEndAlign(movedLeft: boolean): void;
+    /**
+     * Finishes carousel drag with free mode.
+     *
+     * @param {number} delta Position delta for tweening.
+     * @param {boolean} movedLeft If carousel moved to the left.
+     * @memberof Stage
+     */
+    dragEndFree(delta: number, movedLeft: boolean): void;
+    /**
+     * Returns index using position.
+     *
+     * @param {boolean} movedLeft If carousel moved to the left.
+     * @returns {number} Stage index.
+     * @memberof Stage
+     */
+    indexByPosition(movedLeft: boolean): number;
     /**
      * Returns carousel item count.
      *

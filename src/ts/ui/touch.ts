@@ -10,13 +10,24 @@ import { Stage } from "../stage";
 export class Touch {
     private currentOptions: Options;
 
-    private firstX = 0;
-    private previousX = 0;
-    private previousY = 0;
+    // Positions
+    private firstX: number = 0;
+    private firstY: number = 0;
+    private previousX: number = 0;
+    private previousY: number = 0;
 
-    private distanceX = 0;
-    private distanceY = 0;
-    private minDistance = 20;
+    // Speed
+    private deltaX: number = 0;
+    private deltaY: number = 0;
+
+    // Distance
+    private distanceX: number = 0;
+    private distanceY: number = 0;
+    private dragMinDistance: number = 20;
+
+    // Free mode
+    private dragFreeMinDelta: number = 2;
+    private dragFreeFactor: number = 2;
 
     private state: "free" | "drag" | "lock" = "free";
 
@@ -55,7 +66,7 @@ export class Touch {
         const touch = event.touches[0];
 
         this.firstX = this.previousX = touch.clientX;
-        this.previousY = touch.clientY;
+        this.firstY = this.previousY = touch.clientY;
 
         this.distanceX = this.distanceY = 0;
     }
@@ -70,18 +81,18 @@ export class Touch {
     private onTouchMove(event: TouchEvent) {
         const touch = event.touches[0];
 
-        const deltaX = touch.clientX - this.previousX;
-        const deltaY = touch.clientY - this.previousY;
+        this.deltaX = touch.clientX - this.previousX;
+        this.deltaY = touch.clientY - this.previousY;
 
-        this.distanceX += Math.abs(deltaX);
-        this.distanceY += Math.abs(deltaY);
+        this.distanceX += Math.abs(this.deltaX);
+        this.distanceY += Math.abs(this.deltaY);
 
-        const dragDistance = this.distanceX > this.minDistance || this.distanceY > this.minDistance;
-        const horizontalDrag = this.distanceX > this.distanceY;
+        if (this.currentOptions.touch !== false) {
+            const minimumDrag = this.distanceX >= this.dragMinDistance || this.distanceY >= this.dragMinDistance;
+            const horizontalDrag = this.distanceX >= this.distanceY;
 
-        if (this.currentOptions.touch) {
             // Check for minimum distance and horizontal drag
-            if (this.state === "free" && dragDistance) {
+            if (this.state === "free" && minimumDrag) {
                 if (horizontalDrag) {
                     this.state = "drag";
                 } else {
@@ -95,7 +106,7 @@ export class Touch {
                     event.preventDefault();
                 }
 
-                this.stage.drag(deltaX);
+                this.stage.drag(this.deltaX);
             }
         }
 
@@ -111,13 +122,22 @@ export class Touch {
      * @memberof Touch
      */
     private onTouchEnd(event: TouchEvent) {
+        this.state = "free";
+
         const movedLeft = this.firstX > this.previousX;
 
-        // Prevent disabling touch while dragging
-        if (this.currentOptions.touch || this.state === "drag") {
-            this.state = "free";
+        if (this.currentOptions.touch === true) {
+            this.stage.dragEndAlign(movedLeft);
+        } else if (this.currentOptions.touch === "free") {
+            const minimumDelta = Math.abs(this.deltaX) >= this.dragFreeMinDelta;
 
-            this.stage.dragEnd(movedLeft);
+            if (minimumDelta) {
+                const delta = Math.pow(this.deltaX, this.dragFreeFactor) * Math.sign(this.deltaX);
+
+                this.stage.dragEndFree(delta, movedLeft);
+            } else {
+                this.stage.dragEndFree(0, movedLeft);
+            }
         }
     }
 }

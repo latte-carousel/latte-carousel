@@ -22,6 +22,7 @@ export class Carousel extends EventEmitter {
     private stageElement: HTMLElement;
     private itemElements: HTMLCollection;
 
+    private currentOptions: Options;
     private options: Options;
     private stage: Stage;
     private touch: Touch;
@@ -75,7 +76,6 @@ export class Carousel extends EventEmitter {
 
         window.addEventListener("resize", this.onWindowResizeListener);
 
-        this.stage.on("drag", this.onStageDrag.bind(this));
         this.stage.on("move", this.onStageMove.bind(this));
         this.stage.on("moved", this.onStageMoved.bind(this));
 
@@ -126,6 +126,8 @@ export class Carousel extends EventEmitter {
      * @memberof Carousel
      */
     private update() {
+        this.currentOptions = this.options.getBreakpointOptions();
+
         this.stage.update();
 
         this.touch.update();
@@ -149,17 +151,6 @@ export class Carousel extends EventEmitter {
     }
 
     /**
-     * Stage drag listener.
-     *
-     * @private
-     * @param {*} data Event data.
-     * @memberof Carousel
-     */
-    private onStageDrag(data: any) {
-        this.trigger("drag", data);
-    }
-
-    /**
      * Stage move listener.
      *
      * @private
@@ -180,6 +171,8 @@ export class Carousel extends EventEmitter {
      * @memberof Carousel
      */
     private onStageMoved(data: any) {
+        this.dots.update();
+
         this.trigger("moved", data);
     }
 
@@ -191,7 +184,7 @@ export class Carousel extends EventEmitter {
      * @memberof Carousel
      */
     private onCarouselPrevious(data: any) {
-        this.stage.move(-1);
+        this.stage.move(-this.currentOptions.move);
     }
 
     /**
@@ -202,7 +195,7 @@ export class Carousel extends EventEmitter {
      * @memberof Carousel
      */
     private onCarouselNext(data: any) {
-        this.stage.move(1);
+        this.stage.move(this.currentOptions.move);
     }
 
     /**

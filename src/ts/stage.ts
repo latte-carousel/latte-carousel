@@ -130,24 +130,61 @@ export class Stage extends EventEmitter {
 
         Tween.translate(this.stageElement, this.currentPosition, 0, 0);
 
-        this.trigger("drag");
+        this.trigger("move");
     }
 
     /**
-     * Finishes carousel drag.
+     * Finishes carousel drag with align mode.
      *
      * @param {boolean} movedLeft If carousel moved to the left.
      * @memberof Stage
      */
-    public dragEnd(movedLeft: boolean) {
-        // Compute index by position
-        if (movedLeft) {
-            this.currentIndex = Math.ceil(Math.abs(this.currentPosition) / this.itemSize);
-        } else {
-            this.currentIndex = Math.floor(Math.abs(this.currentPosition) / this.itemSize);
-        }
+    public dragEndAlign(movedLeft: boolean) {
+        this.currentIndex = this.indexByPosition(movedLeft);
 
         this.move(0);
+    }
+
+    /**
+     * Finishes carousel drag with free mode.
+     *
+     * @param {number} delta Position delta for tweening.
+     * @param {boolean} movedLeft If carousel moved to the left.
+     * @memberof Stage
+     */
+    public dragEndFree(delta: number, movedLeft: boolean) {
+        const lastIndex = this.last();
+
+        const firstPosition = 0;
+        const lastPosition = lastIndex * this.itemSize * -1;
+
+        // Change position only
+        this.currentPosition += delta;
+        this.currentPosition = Math.min(Math.max(lastPosition, this.currentPosition), firstPosition);
+
+        // Compute index
+        this.currentIndex = this.indexByPosition(movedLeft);
+
+        Tween.translate(this.stageElement, this.currentPosition, 0, this.currentOptions.animation, () => {
+            this.currentIndex = this.indexByPosition(movedLeft);
+
+            this.trigger("moved");
+        });
+    }
+
+    /**
+     * Returns index using position.
+     *
+     * @param {boolean} movedLeft If carousel moved to the left.
+     * @returns {number} Stage index.
+     * @memberof Stage
+     */
+    public indexByPosition(movedLeft: boolean): number {
+        if (movedLeft) {
+            return Math.ceil(Math.abs(this.currentPosition) / this.itemSize);
+        }
+
+        return Math.floor(Math.abs(this.currentPosition) / this.itemSize);
     }
 
     /**

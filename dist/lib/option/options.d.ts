@@ -9,7 +9,7 @@ export declare class Options {
     count?: number;
     move?: number;
     padding?: number;
-    touch?: boolean;
+    touch?: boolean | "free";
     buttons?: boolean;
     dots?: boolean;
     rewind?: boolean;
