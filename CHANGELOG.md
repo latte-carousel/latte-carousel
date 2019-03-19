@@ -7,6 +7,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.5.0] - 2019-03-XX
+
+### Added
+
+-   Move count option
+-   Default font size for latte-item children
+-   Carousel move events
+-   Drag free mode
+
+### Changed
+
+-   Updated dependencies
+
+### Fixed
+
+-   Optional configs
+
 ## [1.4.1] - 2018-11-01
 
 ### Fixed

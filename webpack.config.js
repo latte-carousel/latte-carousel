@@ -30,7 +30,7 @@ module.exports = {
         extensions: [".js", ".ts", ".css", ".scss"],
     },
     plugins: [
-        new CleanWebpackPlugin(["./dist"]),
+        new CleanWebpackPlugin(),
         new MiniCssExtractPlugin({
             filename: "latte-carousel.min.css",
             chunkFilename: "latte-carousel.min.css",

@@ -17,15 +17,16 @@ export class Tween {
      * @param {number} x X position.
      * @param {number} y Y position.
      * @param {number} duration Duration in millis.
+     * @param {() => void} [end] Animation end callback.
      * @memberof Tween
      */
-    public static translate(element: HTMLElement, x: number, y: number, duration: number) {
+    public static translate(element: HTMLElement, x: number, y: number, duration: number, end?: () => void) {
         const source = this.getTranslate(element);
         const id = this.animationId++;
 
         (element as ITweenElement).tweenId = id;
 
-        this.animate(duration, (progress) => {
+        const update = (progress: number) => {
             if ((element as ITweenElement).tweenId !== id) {
                 return false;
             }
@@ -38,7 +39,9 @@ export class Tween {
             this.setTranslate(element, value);
 
             return true;
-        });
+        };
+
+        this.animate(duration, update, end);
     }
 
     /**
@@ -57,12 +60,18 @@ export class Tween {
      * @private
      * @static
      * @param {number} duration Duration in millis.
-     * @param {(progress: number) => boolean} callback Animation callback. Must return true for animation to continue.
+     * @param {(progress: number) => boolean} update Animation callback. Must return true for animation to continue.
+     * @param {() => void} [end] Animation end callback.
      * @memberof Tween
      */
-    private static animate(duration: number, callback: (progress: number) => boolean) {
+    private static animate(duration: number, update: (progress: number) => boolean, end?: () => void) {
         if (duration === 0) {
-            callback(1);
+            update(1);
+
+            if (end != null) {
+                end();
+            }
+
             return;
         }
 
@@ -73,10 +82,14 @@ export class Tween {
             const relative = (now - start) / duration;
             const progress = Math.min(relative, 1);
 
-            const shouldContinue = callback(progress);
+            const shouldContinue = update(progress);
 
-            if (progress < 1 && shouldContinue) {
-                this.requestFrame(loop);
+            if (shouldContinue) {
+                if (progress < 1) {
+                    this.requestFrame(loop);
+                } else if (end != null) {
+                    end();
+                }
             }
         };
 

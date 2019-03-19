@@ -12,11 +12,17 @@ export declare class Touch {
     private options;
     private currentOptions;
     private firstX;
+    private firstY;
     private previousX;
     private previousY;
+    private deltaX;
+    private deltaY;
     private distanceX;
     private distanceY;
-    private minDistance;
+    private dragMinDistance;
+    private dragFreeMinDelta;
+    private dragFreeMaxDelta;
+    private dragFreeBaseDelta;
     private state;
     /**
      * Creates an instance of Touch.

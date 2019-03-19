@@ -79,7 +79,7 @@ export class Buttons {
      * @memberof Buttons
      */
     private onPreviousClick(event: MouseEvent) {
-        this.stage.move(-1);
+        this.stage.move(-this.currentOptions.move);
     }
 
     /**
@@ -90,6 +90,6 @@ export class Buttons {
      * @memberof Buttons
      */
     private onNextClick(event: MouseEvent) {
-        this.stage.move(1);
+        this.stage.move(this.currentOptions.move);
     }
 }

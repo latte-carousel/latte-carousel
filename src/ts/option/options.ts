@@ -7,16 +7,18 @@ import { ResponsiveMap } from "./responsive-map";
  * @class Options
  */
 export class Options {
-    public count: number = 3;
-    public padding: number = 0;
-    public touch: boolean = false;
-    public buttons: boolean = true;
-    public dots: boolean = false;
-    public rewind: boolean = true;
-    public autoplay: number = 0;
-    public animation: number = 500;
+    public count?: number = 3;
+    public move?: number = 1;
+    public padding?: number = 0;
+    public touch?: boolean = false;
+    public mode?: "align" | "free" = "align";
+    public buttons?: boolean = true;
+    public dots?: boolean = false;
+    public rewind?: boolean = true;
+    public autoplay?: number = 0;
+    public animation?: number = 500;
 
-    public responsive: ResponsiveMap;
+    public responsive?: ResponsiveMap;
 
     /**
      * Creates an instance of Options.
