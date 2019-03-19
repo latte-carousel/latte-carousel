@@ -3,7 +3,7 @@
 [![npm](https://img.shields.io/npm/l/latte-carousel.svg)](https://github.com/latte-carousel/latte-carousel/blob/master/LICENSE)
 
 <p align="center">
-    <img src="https://latte-carousel.github.io/img/colored_small.png" alt="LatteCarousel"/>
+    <img src="https://lattecarousel.dev/img/colored_small.png" alt="LatteCarousel"/>
 </p>
 
 # About
@@ -36,14 +36,15 @@ var options = {
     count: 3,
     move: 1,
     touch: true,
+    mode: "align",
     buttons: true,
     dots: true,
     rewind: true,
     autoplay: 0,
     animation: 500,
     responsive: {
-        "0": { count: 1.5, touch: "free", buttons: false },
-        "480": { count: 2.5, touch: "free", buttons: false },
+        "0": { count: 1.5, mode: "free", buttons: false },
+        "480": { count: 2.5, mode: "free", buttons: false },
         "768": { count: 3, move: 3, touch: false, dots: false },
         "1440": { count: 4, move: 2, touch: false, dots: false },
     },

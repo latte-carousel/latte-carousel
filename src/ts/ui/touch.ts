@@ -26,8 +26,9 @@ export class Touch {
     private dragMinDistance: number = 20;
 
     // Free mode
-    private dragFreeMinDelta: number = 2;
-    private dragFreeFactor: number = 2;
+    private dragFreeMinDelta: number = 3;
+    private dragFreeMaxDelta: number = 40;
+    private dragFreeBaseDelta: number = 600;
 
     private state: "free" | "drag" | "lock" = "free";
 
@@ -87,7 +88,7 @@ export class Touch {
         this.distanceX += Math.abs(this.deltaX);
         this.distanceY += Math.abs(this.deltaY);
 
-        if (this.currentOptions.touch !== false) {
+        if (this.currentOptions.touch) {
             const minimumDrag = this.distanceX >= this.dragMinDistance || this.distanceY >= this.dragMinDistance;
             const horizontalDrag = this.distanceX >= this.distanceY;
 
@@ -122,21 +123,27 @@ export class Touch {
      * @memberof Touch
      */
     private onTouchEnd(event: TouchEvent) {
-        this.state = "free";
+        // Prevent disabling touch while dragging
+        if (this.currentOptions.touch || this.state === "drag") {
+            this.state = "free";
 
-        const movedLeft = this.firstX > this.previousX;
+            const movedLeft = this.firstX > this.previousX;
 
-        if (this.currentOptions.touch === true) {
-            this.stage.dragEndAlign(movedLeft);
-        } else if (this.currentOptions.touch === "free") {
-            const minimumDelta = Math.abs(this.deltaX) >= this.dragFreeMinDelta;
+            if (this.currentOptions.mode === "align") {
+                this.stage.dragEndAlign(movedLeft);
+            } else if (this.currentOptions.mode === "free") {
+                const clamp = Math.min(Math.max(Math.abs(this.deltaX), this.dragFreeMinDelta), this.dragFreeMaxDelta);
+                const relative = (clamp - this.dragFreeMinDelta) / (this.dragFreeMaxDelta - this.dragFreeMinDelta);
 
-            if (minimumDelta) {
-                const delta = Math.pow(this.deltaX, this.dragFreeFactor) * Math.sign(this.deltaX);
+                const shouldAnimate = relative > 0;
 
-                this.stage.dragEndFree(delta, movedLeft);
-            } else {
-                this.stage.dragEndFree(0, movedLeft);
+                if (shouldAnimate) {
+                    const delta = relative * this.dragFreeBaseDelta * Math.sign(this.deltaX);
+
+                    this.stage.dragEndFree(delta, movedLeft);
+                } else {
+                    this.stage.dragEndFree(0, movedLeft);
+                }
             }
         }
     }
