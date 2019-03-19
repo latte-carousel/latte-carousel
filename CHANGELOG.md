@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [1.5.0] - 2019-03-XX
+## [1.5.0] - 2019-03-19
 
 ### Added
 
@@ -150,7 +150,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 -   Basic carousel support
 -   Build tasks
 
-[unreleased]: https://github.com/latte-carousel/latte-carousel/compare/v1.4.1...develop
+[unreleased]: https://github.com/latte-carousel/latte-carousel/compare/v1.5.0...develop
 [1.4.1]: https://github.com/latte-carousel/latte-carousel/compare/v1.4.0...v1.4.1
 [1.4.0]: https://github.com/latte-carousel/latte-carousel/compare/v1.3.0...v1.4.0
 [1.3.0]: https://github.com/latte-carousel/latte-carousel/compare/v1.2.1...v1.3.0
