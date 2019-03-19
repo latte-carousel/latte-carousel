@@ -21,7 +21,8 @@ export declare class Touch {
     private distanceY;
     private dragMinDistance;
     private dragFreeMinDelta;
-    private dragFreeFactor;
+    private dragFreeMaxDelta;
+    private dragFreeBaseDelta;
     private state;
     /**
      * Creates an instance of Touch.

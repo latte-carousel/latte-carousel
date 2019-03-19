@@ -1,6 +1,6 @@
 {
     "name": "latte-carousel",
-    "version": "1.4.1",
+    "version": "1.5.0",
     "description": "LatteCarousel is a lightweight and responsive carousel.",
     "repository": "https://github.com/latte-carousel/latte-carousel.git",
     "author": {
@@ -18,7 +18,7 @@
         "slider",
         "typescript"
     ],
-    "homepage": "https://latte-carousel.github.io",
+    "homepage": "https://lattecarousel.dev",
     "scripts": {
         "build": "webpack",
         "watch": "webpack --watch",

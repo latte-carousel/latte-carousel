@@ -10,7 +10,8 @@ export class Options {
     public count?: number = 3;
     public move?: number = 1;
     public padding?: number = 0;
-    public touch?: boolean | "free" = false;
+    public touch?: boolean = false;
+    public mode?: "align" | "free" = "align";
     public buttons?: boolean = true;
     public dots?: boolean = false;
     public rewind?: boolean = true;
