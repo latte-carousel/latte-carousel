@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.5.2] - 2019-03-21
+
+### Fixed
+
+-   Export carousel options interface
+
 ## [1.5.1] - 2019-03-20
 
 ### Added
@@ -161,6 +167,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 -   Build tasks
 
 [unreleased]: https://github.com/latte-carousel/latte-carousel/compare/master...develop
+[1.5.2]: https://github.com/latte-carousel/latte-carousel/compare/v1.5.1...v1.5.2
 [1.5.1]: https://github.com/latte-carousel/latte-carousel/compare/v1.5.0...v1.5.1
 [1.5.0]: https://github.com/latte-carousel/latte-carousel/compare/v1.4.1...v1.5.0
 [1.4.1]: https://github.com/latte-carousel/latte-carousel/compare/v1.4.0...v1.4.1
