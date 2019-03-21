@@ -1,5 +1,5 @@
 import { EventEmitter } from "./event/event-emitter";
-import { Options } from "./option/options";
+import { IOptions, Options } from "./option/options";
 import { Stage } from "./stage";
 import { Autoplay } from "./ui/autoplay";
 import { Buttons } from "./ui/buttons";
@@ -37,10 +37,10 @@ export class Carousel extends EventEmitter {
     /**
      * Creates an instance of Carousel.
      * @param {(string | HTMLElement)} elementOrSelector Root carousel element or selector.
-     * @param {Options} [options] Carousel options.
+     * @param {IOptions} [options] Carousel options.
      * @memberof Carousel
      */
-    constructor(elementOrSelector: string | HTMLElement, options?: Options) {
+    constructor(elementOrSelector: string | HTMLElement, options?: IOptions) {
         super();
 
         if (typeof elementOrSelector === "string") {
