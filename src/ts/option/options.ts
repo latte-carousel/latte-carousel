@@ -1,15 +1,34 @@
 import { ResponsiveMap } from "./responsive-map";
 
 /**
+ * Carousel options interface.
+ *
+ * @export
+ * @interface IOptions
+ */
+export interface IOptions {
+    count?: number;
+    move?: number;
+    touch?: boolean;
+    mode?: "align" | "free";
+    buttons?: boolean;
+    dots?: boolean;
+    rewind?: boolean;
+    autoplay?: number;
+    animation?: number;
+    responsive?: ResponsiveMap;
+}
+
+/**
  * Carousel options.
  *
  * @export
  * @class Options
+ * @implements {IOptions}
  */
-export class Options {
+export class Options implements IOptions {
     public count?: number = 3;
     public move?: number = 1;
-    public padding?: number = 0;
     public touch?: boolean = false;
     public mode?: "align" | "free" = "align";
     public buttons?: boolean = true;
@@ -22,10 +41,10 @@ export class Options {
 
     /**
      * Creates an instance of Options.
-     * @param {Options} [options] Options to copy properties.
+     * @param {IOptions} [options] Options to copy properties.
      * @memberof Options
      */
-    constructor(options?: Options) {
+    constructor(options?: IOptions) {
         if (options == null) {
             return;
         }

@@ -1,5 +1,5 @@
 import { EventEmitter } from "./event/event-emitter";
-import { Options } from "./option/options";
+import { IOptions } from "./option/options";
 /**
  * Base carousel class.
  *
@@ -24,10 +24,10 @@ export declare class Carousel extends EventEmitter {
     /**
      * Creates an instance of Carousel.
      * @param {(string | HTMLElement)} elementOrSelector Root carousel element or selector.
-     * @param {Options} [options] Carousel options.
+     * @param {IOptions} [options] Carousel options.
      * @memberof Carousel
      */
-    constructor(elementOrSelector: string | HTMLElement, options?: Options);
+    constructor(elementOrSelector: string | HTMLElement, options?: IOptions);
     /**
      * Removes carousel.
      *
