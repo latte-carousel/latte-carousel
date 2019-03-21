@@ -18,8 +18,8 @@ LatteCarousel is a lightweight and responsive carousel without any dependencies.
 <script src="latte-carousel.min.js"></script>
 
 <!-- CDN -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/latte-carousel@1.5.1/dist/latte-carousel.min.css" />
-<script src="https://cdn.jsdelivr.net/npm/latte-carousel@1.5.1/dist/latte-carousel.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/latte-carousel@1.5.2/dist/latte-carousel.min.css" />
+<script src="https://cdn.jsdelivr.net/npm/latte-carousel@1.5.2/dist/latte-carousel.min.js"></script>
 ```
 
 ```html
