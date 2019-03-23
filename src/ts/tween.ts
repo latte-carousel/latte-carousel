@@ -109,7 +109,12 @@ export class Tween {
         const source = { x: 0, y: 0 };
 
         const regex = /translate\(([0-9.-]+)px,\s?([0-9.-]+)px\)/;
-        const value = (element.style as any)["-ms-transform"] || element.style.transform;
+        const value =
+            (element.style as any)["-ms-transform"] ||
+            (element.style as any)["-webkit-transform"] ||
+            (element.style as any)["-moz-transform"] ||
+            (element.style as any)["-o-transform"] ||
+            element.style.transform;
 
         if (value != null) {
             const match = regex.exec(value);
@@ -136,6 +141,9 @@ export class Tween {
         const transform = `translate(${Math.ceil(value.x)}px, ${Math.ceil(value.y)}px)`;
 
         (element.style as any)["-ms-transform"] = transform;
+        (element.style as any)["-webkit-transform"] = transform;
+        (element.style as any)["-moz-transform"] = transform;
+        (element.style as any)["-o-transform"] = transform;
         element.style.transform = transform;
     }
 
