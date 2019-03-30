@@ -1,4 +1,4 @@
-import { Options } from "../option/options";
+import { IOptions, Options } from "../option/options";
 import { Stage } from "../stage";
 
 /**
@@ -8,7 +8,7 @@ import { Stage } from "../stage";
  * @class Autoplay
  */
 export class Autoplay {
-    private currentOptions: Options;
+    private currentOptions: IOptions;
 
     private intervalId: number = 0;
     private mouseOver: boolean = false;

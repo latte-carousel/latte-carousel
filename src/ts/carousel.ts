@@ -22,7 +22,7 @@ export class Carousel extends EventEmitter {
     private stageElement: HTMLElement;
     private itemElements: HTMLCollection;
 
-    private currentOptions: Options;
+    private currentOptions: IOptions;
     private options: Options;
     private stage: Stage;
     private touch: Touch;
