@@ -1,5 +1,5 @@
 import { EventEmitter } from "./event/event-emitter";
-import { Options } from "./option/options";
+import { IOptions, Options } from "./option/options";
 import { Tween } from "./tween";
 
 /**
@@ -10,7 +10,7 @@ import { Tween } from "./tween";
  * @extends {EventEmitter}
  */
 export class Stage extends EventEmitter {
-    private currentOptions: Options;
+    private currentOptions: IOptions;
 
     private currentIndex: number = 0;
     private currentPosition: number = 0;

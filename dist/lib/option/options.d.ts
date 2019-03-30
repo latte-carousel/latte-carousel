@@ -47,5 +47,5 @@ export declare class Options implements IOptions {
      * @returns {Options} Carousel options.
      * @memberof Options
      */
-    getBreakpointOptions(): Options;
+    getBreakpointOptions(): IOptions;
 }

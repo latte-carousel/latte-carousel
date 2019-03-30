@@ -1,4 +1,4 @@
-import { Options } from "../option/options";
+import { IOptions, Options } from "../option/options";
 import { Stage } from "../stage";
 
 /**
@@ -8,7 +8,7 @@ import { Stage } from "../stage";
  * @class Buttons
  */
 export class Buttons {
-    private currentOptions: Options;
+    private currentOptions: IOptions;
 
     private previousButton: HTMLElement;
     private nextButton: HTMLElement;

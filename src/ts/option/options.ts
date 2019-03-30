@@ -67,7 +67,7 @@ export class Options implements IOptions {
      * @returns {Options} Carousel options.
      * @memberof Options
      */
-    public getBreakpointOptions(): Options {
+    public getBreakpointOptions(): IOptions {
         if (this.responsive == null) {
             return this;
         }
@@ -76,7 +76,7 @@ export class Options implements IOptions {
         const screenWidth = window.innerWidth || document.body.clientWidth;
 
         // Find matched breakpoint option
-        let matchOption: Options = null;
+        let matchOption: IOptions = null;
         let matchBreakpoint = 0;
 
         for (const key in this.responsive) {
