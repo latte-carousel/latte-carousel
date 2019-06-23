@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.5.5] - 2019-06-23
+
+### Changed
+
+-   Updated dependencies
+
 ## [1.5.4] - 2019-03-30
 
 ### Fixed
@@ -179,6 +185,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 -   Build tasks
 
 [unreleased]: https://github.com/latte-carousel/latte-carousel/compare/master...develop
+[1.5.5]: https://github.com/latte-carousel/latte-carousel/compare/v1.5.4...v1.5.5
 [1.5.4]: https://github.com/latte-carousel/latte-carousel/compare/v1.5.3...v1.5.4
 [1.5.3]: https://github.com/latte-carousel/latte-carousel/compare/v1.5.2...v1.5.3
 [1.5.2]: https://github.com/latte-carousel/latte-carousel/compare/v1.5.1...v1.5.2
