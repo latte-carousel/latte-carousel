@@ -15,14 +15,14 @@ export class Autoplay {
 
     /**
      * Creates an instance of Autoplay.
-     * @param {HTMLElement} contentElement Content element.
+     * @param {HTMLElement} carouselElement Carousel element.
      * @param {Stage} stage Carousel stage.
      * @param {Options} options Carousel options.
      * @memberof Autoplay
      */
-    constructor(private contentElement: HTMLElement, private stage: Stage, private options: Options) {
-        this.contentElement.addEventListener("mouseenter", this.onMouseEnter.bind(this));
-        this.contentElement.addEventListener("mouseleave", this.onMouseLeave.bind(this));
+    constructor(private carouselElement: HTMLElement, private stage: Stage, private options: Options) {
+        this.carouselElement.addEventListener("mouseenter", this.onMouseEnter.bind(this));
+        this.carouselElement.addEventListener("mouseleave", this.onMouseLeave.bind(this));
 
         this.update();
     }
@@ -35,14 +35,9 @@ export class Autoplay {
     public update() {
         this.currentOptions = this.options.getBreakpointOptions();
 
-        // Clear current interval
-        if (this.intervalId > 0) {
-            window.clearInterval(this.intervalId);
-        }
+        this.disableInterval();
 
-        if (this.currentOptions.autoplay > 0) {
-            this.intervalId = window.setInterval(this.onInterval.bind(this), this.currentOptions.autoplay);
-        }
+        this.enableInterval();
     }
 
     /**
@@ -51,8 +46,32 @@ export class Autoplay {
      * @memberof Autoplay
      */
     public remove() {
+        this.disableInterval();
+    }
+
+    /**
+     * Enables interval.
+     *
+     * @private
+     * @memberof Autoplay
+     */
+    private enableInterval() {
+        if (this.currentOptions.autoplay > 0 && this.intervalId === 0) {
+            this.intervalId = window.setInterval(this.onInterval.bind(this), this.currentOptions.autoplay);
+        }
+    }
+
+    /**
+     * Disables interval.
+     *
+     * @private
+     * @memberof Autoplay
+     */
+    private disableInterval() {
         if (this.intervalId > 0) {
             window.clearInterval(this.intervalId);
+
+            this.intervalId = 0;
         }
     }
 
@@ -76,6 +95,8 @@ export class Autoplay {
      */
     private onMouseEnter() {
         this.mouseOver = true;
+
+        this.disableInterval();
     }
 
     /**
@@ -86,5 +107,7 @@ export class Autoplay {
      */
     private onMouseLeave() {
         this.mouseOver = false;
+
+        this.enableInterval();
     }
 }

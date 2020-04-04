@@ -7,7 +7,7 @@ import { Stage } from "../stage";
  * @class Autoplay
  */
 export declare class Autoplay {
-    private contentElement;
+    private carouselElement;
     private stage;
     private options;
     private currentOptions;
@@ -15,12 +15,12 @@ export declare class Autoplay {
     private mouseOver;
     /**
      * Creates an instance of Autoplay.
-     * @param {HTMLElement} contentElement Content element.
+     * @param {HTMLElement} carouselElement Carousel element.
      * @param {Stage} stage Carousel stage.
      * @param {Options} options Carousel options.
      * @memberof Autoplay
      */
-    constructor(contentElement: HTMLElement, stage: Stage, options: Options);
+    constructor(carouselElement: HTMLElement, stage: Stage, options: Options);
     /**
      * Updates carousel autoplay.
      *
@@ -33,6 +33,20 @@ export declare class Autoplay {
      * @memberof Autoplay
      */
     remove(): void;
+    /**
+     * Enables interval.
+     *
+     * @private
+     * @memberof Autoplay
+     */
+    private enableInterval;
+    /**
+     * Disables interval.
+     *
+     * @private
+     * @memberof Autoplay
+     */
+    private disableInterval;
     /**
      * Interval listener.
      *
