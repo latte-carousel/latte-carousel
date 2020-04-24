@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.6.0] - 2020-04-24
+
+### Changed
+
+-   Auto-scroll timer reset
+-   Updated dependencies
+
 ## [1.5.6] - 2019-09-29
 
 ### Changed
