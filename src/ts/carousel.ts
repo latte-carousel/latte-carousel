@@ -70,7 +70,7 @@ export class Carousel extends EventEmitter {
         this.touch = new Touch(this.contentElement, this.stage, this.options);
         this.buttons = new Buttons(this.carouselElement, this.contentElement, this.stage, this.options);
         this.dots = new Dots(this.carouselElement, this.stage, this.options);
-        this.autoplay = new Autoplay(this.contentElement, this.stage, this.options);
+        this.autoplay = new Autoplay(this.carouselElement, this.stage, this.options);
 
         this.onWindowResizeListener = this.onWindowResize.bind(this);
 

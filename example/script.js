@@ -1,4 +1,4 @@
-window.addEventListener("DOMContentLoaded", function() {
+window.addEventListener("DOMContentLoaded", function () {
     var options = {
         count: 3,
         move: 1,
@@ -23,11 +23,11 @@ window.addEventListener("DOMContentLoaded", function() {
     carousel.trigger("previous");
     carousel.trigger("goto", 0);
 
-    carousel.on("move", function() {
+    carousel.on("move", function () {
         console.log("move");
     });
 
-    carousel.on("moved", function() {
+    carousel.on("moved", function () {
         console.log("moved");
     });
 
