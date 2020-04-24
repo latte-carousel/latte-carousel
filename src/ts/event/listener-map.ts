@@ -5,5 +5,5 @@
  * @interface ListenerMap
  */
 export interface IListenerMap {
-    [event: string]: Array<(data?: any) => void>;
+    [event: string]: ((data?: any) => void)[];
 }
